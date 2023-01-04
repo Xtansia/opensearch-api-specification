@@ -1,9 +1,22 @@
 {
     "version": "1.0",
-    "plugins": {
-        "openapi": {
-            "service": "OpenSearch#OpenSearch",
-            "protocol": "aws.protocols#restJson1"
+    "projections": {
+        "full": {
+            "plugins": {
+                "openapi": {
+                    "service": "OpenSearch#OpenSearch",
+                    "protocol": "aws.protocols#restJson1",
+                    "tags": true,
+                    "useIntegerType": true
+                }
+            }
+        },
+        "remotestore": {
+            "plugins": {
+                "opensearch-java": {
+                    "service": "OpenSearch#RemoteStore"
+                }
+            }
         }
     }
 }

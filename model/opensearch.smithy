@@ -15,7 +15,19 @@ use aws.protocols#restJson1
 
 @httpBasicAuth
 @restJson1
-service OpenSearch {
+@mixin
+service BaseService {}
+
+@mixin
+service RemoteStoreMixin with [BaseService] {
+    operations: [
+        PostRemoteStoreRestore
+    ]
+}
+
+service RemoteStore with [RemoteStoreMixin] {}
+
+service OpenSearch with [RemoteStoreMixin] {
     version: "2021-11-23",
     operations: [
         PutCreateIndex,
@@ -33,7 +45,6 @@ service OpenSearch {
         GetClusterSettings,
         PostAliases,
         GetSettingsIndex,
-        GetSettingsIndexSetting,
-        PostRemoteStoreRestore
+        GetSettingsIndexSetting
     ]
 }

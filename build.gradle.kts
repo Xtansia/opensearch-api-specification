@@ -21,6 +21,7 @@ buildscript {
         classpath("software.amazon.smithy:smithy-openapi:$smithyVersion")
         classpath("software.amazon.smithy:smithy-aws-traits:$smithyVersion")
         classpath("software.amazon.smithy:smithy-cli:$smithyVersion")
+        classpath(files("/Users/tsfarr/Development/opensearch-clients/clients/opensearch-java/java-codegen/build/libs/java-codegen-2.1.1-SNAPSHOT-all.jar"))
     }
 }
 
