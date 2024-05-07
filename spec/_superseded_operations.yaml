@@ -231,12 +231,12 @@ $schema: ../json_schemas/_superseded_operations.schema.yaml
   superseded_by: /_plugins/_knn/warmup/{index}
   operations:
     - GET
-/_opendistro/_knn/{nodeId}/stats/:
-  superseded_by: /_plugins/_knn/{nodeId}/stats/
+/_opendistro/_knn/{node_id}/stats/:
+  superseded_by: /_plugins/_knn/{node_id}/stats/
   operations:
     - GET
-/_opendistro/_knn/{nodeId}/stats/{stat}:
-  superseded_by: /_plugins/_knn/{nodeId}/stats/{stat}
+/_opendistro/_knn/{node_id}/stats/{stat}:
+  superseded_by: /_plugins/_knn/{node_id}/stats/{stat}
   operations:
     - GET
 /_opendistro/_performanceanalyzer/_agent/{redirectEndpoint}:
@@ -388,8 +388,8 @@ $schema: ../json_schemas/_superseded_operations.schema.yaml
   operations:
     - GET
     - PATCH
-/_opendistro/_security/api/actiongroups/{name}:
-  superseded_by: /_plugins/_security/api/actiongroups/{name}
+/_opendistro/_security/api/actiongroups/{action_group}:
+  superseded_by: /_plugins/_security/api/actiongroups/{action_group}
   operations:
     - GET
     - PUT
@@ -420,15 +420,15 @@ $schema: ../json_schemas/_superseded_operations.schema.yaml
   operations:
     - GET
     - PATCH
-/_opendistro/_security/api/internalusers/{name}:
-  superseded_by: /_plugins/_security/api/internalusers/{name}
+/_opendistro/_security/api/internalusers/{username}:
+  superseded_by: /_plugins/_security/api/internalusers/{username}
   operations:
     - GET
     - PUT
     - DELETE
     - PATCH
-/_opendistro/_security/api/internalusers/{name}/authtoken:
-  superseded_by: /_plugins/_security/api/internalusers/{name}/authtoken
+/_opendistro/_security/api/internalusers/{username}/authtoken:
+  superseded_by: /_plugins/_security/api/internalusers/{username}/authtoken
   operations:
     - POST
 /_opendistro/_security/api/migrate:
@@ -444,8 +444,8 @@ $schema: ../json_schemas/_superseded_operations.schema.yaml
   operations:
     - GET
     - PATCH
-/_opendistro/_security/api/roles/{name}:
-  superseded_by: /_plugins/_security/api/roles/{name}
+/_opendistro/_security/api/roles/{role}:
+  superseded_by: /_plugins/_security/api/roles/{role}
   operations:
     - GET
     - PUT
@@ -456,8 +456,8 @@ $schema: ../json_schemas/_superseded_operations.schema.yaml
   operations:
     - GET
     - PATCH
-/_opendistro/_security/api/rolesmapping/{name}:
-  superseded_by: /_plugins/_security/api/rolesmapping/{name}
+/_opendistro/_security/api/rolesmapping/{role}:
+  superseded_by: /_plugins/_security/api/rolesmapping/{role}
   operations:
     - GET
     - PUT
@@ -490,8 +490,8 @@ $schema: ../json_schemas/_superseded_operations.schema.yaml
   operations:
     - GET
     - PATCH
-/_opendistro/_security/api/tenants/{name}:
-  superseded_by: /_plugins/_security/api/tenants/{name}
+/_opendistro/_security/api/tenants/{tenant}:
+  superseded_by: /_plugins/_security/api/tenants/{tenant}
   operations:
     - GET
     - PUT
