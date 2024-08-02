@@ -58,6 +58,27 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.get_alias@200'
+    put:
+      operationId: indices.put_alias.0
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
   /_alias/{name}:
     get:
       operationId: indices.get_alias.1
@@ -101,6 +122,50 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.exists_alias@200'
+    post:
+      operationId: indices.put_alias.1
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::path.name'
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
+    put:
+      operationId: indices.put_alias.2
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::path.name'
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
   /_aliases:
     post:
       operationId: indices.update_aliases.0
@@ -108,7 +173,7 @@ paths:
       x-version-added: '1.0'
       description: Updates index aliases.
       externalDocs:
-        url: https://opensearch.org/docs/latest/api-reference/alias/
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/alias/
       parameters:
         - $ref: '#/components/parameters/indices.update_aliases::query.cluster_manager_timeout'
         - $ref: '#/components/parameters/indices.update_aliases::query.master_timeout'
@@ -123,6 +188,51 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.update_aliases@200'
+  /_aliases/{name}:
+    post:
+      operationId: indices.put_alias.3
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::path.name'
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
+    put:
+      operationId: indices.put_alias.4
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::path.name'
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
   /_analyze:
     get:
       operationId: indices.analyze.0
@@ -5516,6 +5626,108 @@ paths:
         - $ref: '#/components/parameters/_global::query.error_trace'
         - $ref: '#/components/parameters/_global::query.source'
         - $ref: '#/components/parameters/_global::query.filter_path'
+  /_plugins/_sql:
+    post:
+      operationId: sql.query.0
+      x-operation-group: sql.query
+      x-version-added: '1.0'
+      description: Send a SQL/PPL query to the SQL plugin.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/sql-ppl-api/
+      parameters:
+        - $ref: '#/components/parameters/sql.query::query.format'
+        - $ref: '#/components/parameters/sql.query::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.query'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.query@200'
+  /_plugins/_sql/_explain:
+    post:
+      operationId: sql.explain.0
+      x-operation-group: sql.explain
+      x-version-added: '1.0'
+      description: Shows how a query is executed against OpenSearch.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/sql-ppl-api/
+      parameters:
+        - $ref: '#/components/parameters/sql.explain::query.format'
+        - $ref: '#/components/parameters/sql.explain::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.explain'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.explain@200'
+  /_plugins/_sql/close:
+    post:
+      operationId: sql.close.0
+      x-operation-group: sql.close
+      x-version-added: '1.0'
+      description: Clear the cursor context.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/sql-ppl-api/
+      parameters:
+        - $ref: '#/components/parameters/sql.close::query.format'
+        - $ref: '#/components/parameters/sql.close::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.close'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.close@200'
+  /_plugins/_sql/stats:
+    get:
+      operationId: sql.get_stats.0
+      x-operation-group: sql.get_stats
+      x-version-added: '1.0'
+      description: Collect metrics for the plugin within the interval.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/monitoring/
+      parameters:
+        - $ref: '#/components/parameters/sql.get_stats::query.format'
+        - $ref: '#/components/parameters/sql.get_stats::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.get_stats@200'
+    post:
+      operationId: sql.post_stats.1
+      x-operation-group: sql.post_stats
+      x-version-added: '1.0'
+      description: By a stats endpoint, you are able to collect metrics for the plugin within the interval.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/monitoring/
+      parameters:
+        - $ref: '#/components/parameters/sql.post_stats::query.format'
+        - $ref: '#/components/parameters/sql.post_stats::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.post_stats'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.post_stats@200'
   /_plugins/_transform:
     get:
       operationId: transforms.search.0
@@ -7680,6 +7892,28 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.get_alias@200'
+    put:
+      operationId: indices.put_alias.5
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::path.index'
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
   /{index}/_alias/{name}:
     delete:
       operationId: indices.delete_alias.0
@@ -7747,12 +7981,12 @@ paths:
         '200':
           $ref: '#/components/responses/indices.exists_alias@200'
     post:
-      operationId: indices.put_alias.0
+      operationId: indices.put_alias.6
       x-operation-group: indices.put_alias
       x-version-added: '1.0'
       description: Creates or updates an alias.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/index-alias/#create-aliases
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
       parameters:
         - $ref: '#/components/parameters/indices.put_alias::path.index'
         - $ref: '#/components/parameters/indices.put_alias::path.name'
@@ -7770,15 +8004,38 @@ paths:
         '200':
           $ref: '#/components/responses/indices.put_alias@200'
     put:
-      operationId: indices.put_alias.1
+      operationId: indices.put_alias.7
       x-operation-group: indices.put_alias
       x-version-added: '1.0'
       description: Creates or updates an alias.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/index-alias/#create-aliases
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
       parameters:
         - $ref: '#/components/parameters/indices.put_alias::path.index'
         - $ref: '#/components/parameters/indices.put_alias::path.name'
+        - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
+        - $ref: '#/components/parameters/indices.put_alias::query.timeout'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.put_alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/indices.put_alias@200'
+  /{index}/_aliases:
+    put:
+      operationId: indices.put_alias.8
+      x-operation-group: indices.put_alias
+      x-version-added: '1.0'
+      description: Creates or updates an alias.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
+      parameters:
+        - $ref: '#/components/parameters/indices.put_alias::path.index'
         - $ref: '#/components/parameters/indices.put_alias::query.cluster_manager_timeout'
         - $ref: '#/components/parameters/indices.put_alias::query.master_timeout'
         - $ref: '#/components/parameters/indices.put_alias::query.timeout'
@@ -7815,12 +8072,12 @@ paths:
         '200':
           $ref: '#/components/responses/indices.delete_alias@200'
     post:
-      operationId: indices.put_alias.2
+      operationId: indices.put_alias.9
       x-operation-group: indices.put_alias
       x-version-added: '1.0'
       description: Creates or updates an alias.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/index-alias/#create-aliases
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
       parameters:
         - $ref: '#/components/parameters/indices.put_alias::path.index'
         - $ref: '#/components/parameters/indices.put_alias::path.name'
@@ -7838,12 +8095,12 @@ paths:
         '200':
           $ref: '#/components/responses/indices.put_alias@200'
     put:
-      operationId: indices.put_alias.3
+      operationId: indices.put_alias.10
       x-operation-group: indices.put_alias
       x-version-added: '1.0'
       description: Creates or updates an alias.
       externalDocs:
-        url: https://opensearch.org/docs/latest/im-plugin/index-alias/#create-aliases
+        url: https://opensearch.org/docs/latest/api-reference/index-apis/update-alias/
       parameters:
         - $ref: '#/components/parameters/indices.put_alias::path.index'
         - $ref: '#/components/parameters/indices.put_alias::path.name'
@@ -11446,6 +11703,118 @@ paths:
         - $ref: '#/components/parameters/_global::query.error_trace'
         - $ref: '#/components/parameters/_global::query.source'
         - $ref: '#/components/parameters/_global::query.filter_path'
+      deprecated: true
+      x-ignorable: true
+  /_opendistro/_sql:
+    post:
+      operationId: sql.query.0_superseded
+      x-operation-group: sql.query
+      x-version-added: '1.0'
+      description: Send a SQL/PPL query to the SQL plugin.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/sql-ppl-api/
+      parameters:
+        - $ref: '#/components/parameters/sql.query::query.format'
+        - $ref: '#/components/parameters/sql.query::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.query'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.query@200'
+      deprecated: true
+      x-ignorable: true
+  /_opendistro/_sql/_explain:
+    post:
+      operationId: sql.explain.0_superseded
+      x-operation-group: sql.explain
+      x-version-added: '1.0'
+      description: Shows how a query is executed against OpenSearch.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/sql-ppl-api/
+      parameters:
+        - $ref: '#/components/parameters/sql.explain::query.format'
+        - $ref: '#/components/parameters/sql.explain::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.explain'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.explain@200'
+      deprecated: true
+      x-ignorable: true
+  /_opendistro/_sql/close:
+    post:
+      operationId: sql.close.0_superseded
+      x-operation-group: sql.close
+      x-version-added: '1.0'
+      description: Clear the cursor context.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/sql-ppl-api/
+      parameters:
+        - $ref: '#/components/parameters/sql.close::query.format'
+        - $ref: '#/components/parameters/sql.close::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.close'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.close@200'
+      deprecated: true
+      x-ignorable: true
+  /_opendistro/_sql/stats:
+    get:
+      operationId: sql.get_stats.0_superseded
+      x-operation-group: sql.get_stats
+      x-version-added: '1.0'
+      description: Collect metrics for the plugin within the interval.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/monitoring/
+      parameters:
+        - $ref: '#/components/parameters/sql.get_stats::query.format'
+        - $ref: '#/components/parameters/sql.get_stats::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.get_stats@200'
+      deprecated: true
+      x-ignorable: true
+    post:
+      operationId: sql.post_stats.1_superseded
+      x-operation-group: sql.post_stats
+      x-version-added: '1.0'
+      description: By a stats endpoint, you are able to collect metrics for the plugin within the interval.
+      externalDocs:
+        url: https://opensearch.org/docs/latest/search-plugins/sql/monitoring/
+      parameters:
+        - $ref: '#/components/parameters/sql.post_stats::query.format'
+        - $ref: '#/components/parameters/sql.post_stats::query.sanitize'
+        - $ref: '#/components/parameters/_global::query.pretty'
+        - $ref: '#/components/parameters/_global::query.human'
+        - $ref: '#/components/parameters/_global::query.error_trace'
+        - $ref: '#/components/parameters/_global::query.source'
+        - $ref: '#/components/parameters/_global::query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/sql.post_stats'
+      responses:
+        '200':
+          $ref: '#/components/responses/sql.post_stats@200'
       deprecated: true
       x-ignorable: true
 components:
@@ -20915,6 +21284,81 @@ components:
       schema:
         $ref: '#/components/schemas/_common:Duration'
       style: form
+    sql.close::query.format:
+      name: format
+      in: query
+      description: A short version of the Accept header, e.g. json, yaml.
+      schema:
+        type: string
+        description: A short version of the Accept header, e.g. json, yaml.
+    sql.close::query.sanitize:
+      name: sanitize
+      in: query
+      description: Specifies whether to escape special characters in the results
+      schema:
+        type: boolean
+        default: true
+        description: Specifies whether to escape special characters in the results
+    sql.explain::query.format:
+      name: format
+      in: query
+      description: A short version of the Accept header, e.g. json, yaml.
+      schema:
+        type: string
+        description: A short version of the Accept header, e.g. json, yaml.
+    sql.explain::query.sanitize:
+      name: sanitize
+      in: query
+      description: Specifies whether to escape special characters in the results
+      schema:
+        type: boolean
+        default: true
+        description: Specifies whether to escape special characters in the results
+    sql.get_stats::query.format:
+      name: format
+      in: query
+      description: A short version of the Accept header, e.g. json, yaml.
+      schema:
+        type: string
+        description: A short version of the Accept header, e.g. json, yaml.
+    sql.get_stats::query.sanitize:
+      name: sanitize
+      in: query
+      description: Specifies whether to escape special characters in the results
+      schema:
+        type: boolean
+        default: true
+        description: Specifies whether to escape special characters in the results
+    sql.post_stats::query.format:
+      name: format
+      in: query
+      description: A short version of the Accept header, e.g. json, yaml.
+      schema:
+        type: string
+        description: A short version of the Accept header, e.g. json, yaml.
+    sql.post_stats::query.sanitize:
+      name: sanitize
+      in: query
+      description: Specifies whether to escape special characters in the results
+      schema:
+        type: boolean
+        default: true
+        description: Specifies whether to escape special characters in the results
+    sql.query::query.format:
+      name: format
+      in: query
+      description: A short version of the Accept header, e.g. json, yaml.
+      schema:
+        type: string
+        description: A short version of the Accept header, e.g. json, yaml.
+    sql.query::query.sanitize:
+      name: sanitize
+      in: query
+      description: Specifies whether to escape special characters in the results
+      schema:
+        type: boolean
+        default: true
+        description: Specifies whether to escape special characters in the results
     tasks.cancel::path.task_id:
       in: path
       name: task_id
@@ -21936,8 +22380,12 @@ components:
           schema:
             type: object
             properties:
+              alias:
+                type: string
               filter:
                 $ref: '#/components/schemas/_common.query_dsl:QueryContainer'
+              index:
+                type: string
               index_routing:
                 $ref: '#/components/schemas/_common:Routing'
               is_write_index:
@@ -22362,18 +22810,7 @@ components:
     ml.search_models:
       content:
         application/json:
-          schema:
-            type: object
-            properties:
-              query:
-                type: object
-                description: The query.
-              size:
-                type: integer
-                description: The number of models to return.
-            required:
-              - query
-              - size
+          $ref: '#/components/schemas/ml._common:SearchModelsQuery'
     msearch:
       content:
         application/x-ndjson:
@@ -23053,6 +23490,30 @@ components:
               rename_replacement:
                 type: string
             description: Details of what to restore
+    sql.close:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlClose'
+      required: true
+    sql.explain:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlExplain'
+      required: true
+    sql.post_stats:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlStats'
+      required: true
+    sql.query:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlQuery'
+      required: true
     termvectors:
       content:
         application/json:
@@ -24540,106 +25001,31 @@ components:
     ml.delete_model_group@200:
       content:
         application/json:
-          schema:
-            type: object
+          $ref: '#/components/schemas/ml._common:ModelGroup'
     ml.delete_model@200:
       content:
         application/json:
-          schema:
-            type: object
+          $ref: '#/components/schemas/ml._common:ModelGroup'
     ml.get_model_group@200:
       content:
         application/json:
-          schema:
-            type: object
-            properties:
-              name:
-                type: string
-                description: The model group name.
-              latest_version:
-                type: number
-                description: The latest version.
-              description:
-                type: string
-                description: The model group description.
-              access:
-                type: string
-                description: The model group access.
-              created_time:
-                type: integer
-                format: int64
-              last_updated_time:
-                type: integer
-                format: int64
-            required:
-              - access
-              - description
-              - latest_version
-              - name
+          $ref: '#/components/schemas/ml._common:ModelGroup'
     ml.get_task@200:
       content:
         application/json:
-          schema:
-            type: object
-            properties:
-              model_id:
-                type: string
-                description: The model ID.
-              state:
-                type: string
-                description: The state.
-                enum:
-                  - CANCELLED
-                  - COMPLETED
-                  - COMPLETED_WITH_ERROR
-                  - CREATED
-                  - FAILED
-                  - RUNNING
-            required:
-              - state
+          $ref: '#/components/schemas/ml._common:Task'
     ml.register_model_group@200:
       content:
         application/json:
-          schema:
-            type: object
-            properties:
-              model_group_id:
-                type: string
-                description: The model group ID.
-              status:
-                type: string
-                description: The status.
-            required:
-              - model_group_id
-              - status
+          $ref: '#/components/schemas/ml._common:ModelGroupRegistration'
     ml.register_model@200:
       content:
         application/json:
-          schema:
-            type: object
-            properties:
-              task_id:
-                type: string
-                description: The task ID.
-              model_id:
-                type: string
-                description: The model ID.
-              status:
-                type: string
-                description: The status.
-            required:
-              - status
-              - task_id
+          $ref: '#/components/schemas/ml._common:Task'
     ml.search_models@200:
       content:
         application/json:
-          schema:
-            type: object
-            properties:
-              hits:
-                $ref: '#/components/schemas/ml._common:SearchModelHits'
-            required:
-              - hits
+          $ref: '#/components/schemas/ml._common:SearchModelsResponse'
     msearch_template@200:
       description: ''
       content:
@@ -25806,6 +26192,36 @@ components:
                   $ref: '#/components/schemas/snapshot.verify_repository:CompactNodeInfo'
             required:
               - nodes
+    sql.close@200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlCloseResponse'
+      required: true
+    sql.explain@200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlExplainResponse'
+      required: true
+    sql.get_stats@200:
+      content:
+        text/plain:
+          schema:
+            type: string
+      required: true
+    sql.post_stats@200:
+      content:
+        text/plain:
+          schema:
+            type: string
+      required: true
+    sql.query@200:
+      description: ''
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/sql._common:SqlQueryResponse'
     tasks.cancel@200:
       description: ''
       content:
@@ -26358,14 +26774,12 @@ components:
         - size_in_bytes
     _common:FieldValue:
       description: A field value.
-      oneOf:
-        - type: number
-        - type: number
-        - type: string
-        - type: boolean
-        - nullable: true
-          type: string
-        - type: object
+      type:
+        - boolean
+        - 'null'
+        - number
+        - object
+        - string
     _common:FlushStats:
       type: object
       properties:
@@ -26900,8 +27314,7 @@ components:
         relocating_node:
           oneOf:
             - $ref: '#/components/schemas/_common:NodeId'
-            - nullable: true
-              type: string
+            - type: 'null'
         relocation_failure_info:
           $ref: '#/components/schemas/_common:RelocationFailureInfo'
       required:
@@ -27037,8 +27450,9 @@ components:
         licensed:
           type: boolean
         custom_foldername:
-          nullable: true
-          type: string
+          type:
+            - 'null'
+            - string
         opensearch_version:
           $ref: '#/components/schemas/_common:VersionString'
       required:
@@ -27374,8 +27788,7 @@ components:
             Specifies any named parameters that are passed into the script as variables.
             Use parameters instead of hard-coded values to decrease compile time.
           type: object
-          additionalProperties:
-            type: object
+          additionalProperties: true
     _common:ScriptField:
       type: object
       properties:
@@ -28335,31 +28748,29 @@ components:
       properties:
         from:
           description: Start of the range (inclusive).
-          oneOf:
-            - type: number
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         key:
           description: Custom key to return the range with.
           type: string
         to:
           description: End of the range (exclusive).
-          oneOf:
-            - type: number
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
     _common.aggregations:ArrayPercentilesItem:
       type: object
       properties:
         key:
           type: string
         value:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         value_as_string:
           type: string
       required:
@@ -29324,40 +29735,40 @@ components:
         - type: object
           properties:
             sum_of_squares:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             variance:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             variance_population:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             variance_sampling:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             std_deviation:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             std_deviation_population:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             std_deviation_sampling:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             std_deviation_bounds:
               $ref: '#/components/schemas/_common.aggregations:StandardDeviationBounds'
             sum_of_squares_as_string:
@@ -29994,19 +30405,17 @@ components:
       properties:
         from:
           description: Start of the range.
-          oneOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         mask:
           description: IP range defined as a CIDR mask.
           type: string
         to:
           description: End of the range.
-          oneOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
     _common.aggregations:IpRangeBucket:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations:MultiBucketBase'
@@ -30021,11 +30430,10 @@ components:
     _common.aggregations:KeyedPercentiles:
       type: object
       additionalProperties:
-        oneOf:
-          - type: string
-          - type: number
-          - nullable: true
-            type: string
+        type:
+          - 'null'
+          - number
+          - string
     _common.aggregations:LinearMovingAverageAggregation:
       allOf:
         - $ref: '#/components/schemas/_common.aggregations:MovingAverageAggregationBase'
@@ -30598,8 +31006,8 @@ components:
                 - type: array
                   items:
                     type: number
-                - nullable: true
-                  type: string
+                - type: 'null'
+                - type: string
             hdr:
               $ref: '#/components/schemas/_common.aggregations:HdrMethod'
             tdigest:
@@ -31033,10 +31441,10 @@ components:
               description: |-
                 The metric value. A missing value generally means that there was no data to aggregate,
                 unless specified otherwise.
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             value_as_string:
               type: string
           required:
@@ -31045,35 +31453,35 @@ components:
       type: object
       properties:
         upper:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         lower:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         upper_population:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         lower_population:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         upper_sampling:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         lower_sampling:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
       required:
         - lower
         - lower_population
@@ -31111,20 +31519,20 @@ components:
             count:
               type: number
             min:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             max:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             avg:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             sum:
               type: number
             min_as_string:
@@ -31174,32 +31582,32 @@ components:
             count:
               type: number
             min_length:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             max_length:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             avg_length:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             entropy:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             distribution:
               oneOf:
+                - type: 'null'
                 - type: object
                   additionalProperties:
                     type: number
-                - nullable: true
-                  type: string
+                - type: string
             min_length_as_string:
               type: string
             max_length_as_string:
@@ -31456,17 +31864,11 @@ components:
         sort:
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/_common:FieldValue'
-              - nullable: true
-                type: string
+            $ref: '#/components/schemas/_common:FieldValue'
         metrics:
           type: object
           additionalProperties:
-            oneOf:
-              - $ref: '#/components/schemas/_common:FieldValue'
-              - nullable: true
-                type: string
+            $ref: '#/components/schemas/_common:FieldValue'
       required:
         - metrics
         - sort
@@ -31511,10 +31913,10 @@ components:
         - type: object
           properties:
             value:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             value_as_string:
               type: string
           required:
@@ -33695,8 +34097,8 @@ components:
       type: string
       enum:
         - 'false'
-        - runtime
         - strict
+        - strict_allow_templates
         - 'true'
     _common.mapping:DynamicProperty:
       allOf:
@@ -34819,13 +35221,11 @@ components:
             from:
               oneOf:
                 - $ref: '#/components/schemas/_common:DateMath'
-                - nullable: true
-                  type: string
+                - type: 'null'
             to:
               oneOf:
                 - $ref: '#/components/schemas/_common:DateMath'
-                - nullable: true
-                  type: string
+                - type: 'null'
             format:
               $ref: '#/components/schemas/_common:DateFormat'
             time_zone:
@@ -35066,8 +35466,17 @@ components:
               $ref: '#/components/schemas/_common:GeoDistanceType'
             validation_method:
               $ref: '#/components/schemas/_common.query_dsl:GeoValidationMethod'
+            ignore_unmapped:
+              description: |-
+                Set to `true` to ignore an unmapped field and not match any documents for this query.
+                Set to `false` to throw an exception if the field is not mapped.
+              type: boolean
+              default: false
+            field:
+              type: object
           required:
             - distance
+            - field
     _common.query_dsl:GeoExecution:
       type: string
       enum:
@@ -35654,15 +36063,15 @@ components:
               description: Less than or equal to.
               type: number
             from:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
             to:
-              oneOf:
-                - type: number
-                - nullable: true
-                  type: string
+              type:
+                - 'null'
+                - number
+                - string
     _common.query_dsl:NumericDecayFunction:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl:DecayFunctionBase'
@@ -35953,7 +36362,9 @@ components:
             To return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/_common.query_dsl:TermQuery'
+            anyOf:
+              - $ref: '#/components/schemas/_common.query_dsl:TermQuery'
+              - $ref: '#/components/schemas/_common:FieldValue'
           minProperties: 1
           maxProperties: 1
         terms:
@@ -36675,10 +37086,9 @@ components:
           x-version-removed: '2.0'
         _id:
           description: The document ID associated with the operation.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         _index:
           description: |-
             Name of the index associated with the operation.
@@ -37258,10 +37668,10 @@ components:
         hit:
           $ref: '#/components/schemas/_core.rank_eval:RankEvalHit'
         rating:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
       required:
         - hit
     _core.rank_eval:RankEvalMetric:
@@ -37987,10 +38397,10 @@ components:
         _id:
           $ref: '#/components/schemas/_common:Id'
         _score:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
         _explanation:
           $ref: '#/components/schemas/_core.explain:Explanation'
         fields:
@@ -38055,10 +38465,10 @@ components:
           items:
             $ref: '#/components/schemas/_core.search:Hit'
         max_score:
-          oneOf:
-            - type: number
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - number
+            - string
       required:
         - hits
     _core.search:InnerHits:
@@ -38363,6 +38773,9 @@ components:
       description: Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.
       oneOf:
         - type: boolean
+        - type: array
+          items:
+            $ref: '#/components/schemas/_common:Field'
         - $ref: '#/components/schemas/_core.search:SourceFilter'
     _core.search:SourceConfigParam:
       description: |-
@@ -38675,8 +39088,7 @@ components:
             IMPORTANT: This metric double-counts disk space for hard-linked files, such as those created when shrinking, splitting, or cloning an index.
           anyOf:
             - $ref: '#/components/schemas/_common:ByteSize'
-            - nullable: true
-              type: string
+            - type: 'null'
         disk.used:
           description: |-
             Total disk space in use.
@@ -38685,8 +39097,7 @@ components:
             Unlike `disk.indices`, this metric does not double-count disk space for hard-linked files.
           anyOf:
             - $ref: '#/components/schemas/_common:ByteSize'
-            - nullable: true
-              type: string
+            - type: 'null'
         disk.avail:
           description: |-
             Free disk space available to OpenSearch.
@@ -38694,32 +39105,27 @@ components:
             Disk-based shard allocation uses this metric to assign shards to nodes based on available disk space.
           anyOf:
             - $ref: '#/components/schemas/_common:ByteSize'
-            - nullable: true
-              type: string
+            - type: 'null'
         disk.total:
           description: Total disk space for the node, including in-use and available space.
           anyOf:
             - $ref: '#/components/schemas/_common:ByteSize'
-            - nullable: true
-              type: string
+            - type: 'null'
         disk.percent:
           description: Total percentage of disk space in use. Calculated as `disk.used / disk.total`.
           anyOf:
             - $ref: '#/components/schemas/_common:Percentage'
-            - nullable: true
-              type: string
+            - type: 'null'
         host:
           description: Network host for the node. Set using the `network.host` setting.
           anyOf:
             - $ref: '#/components/schemas/_common:Host'
-            - nullable: true
-              type: string
+            - type: 'null'
         ip:
           description: IP address and port for the node.
           anyOf:
             - $ref: '#/components/schemas/_common:Ip'
-            - nullable: true
-              type: string
+            - type: 'null'
         node:
           description: Name for the node. Set using the `node.name` setting.
           type: string
@@ -38842,16 +39248,14 @@ components:
           type: string
         docs.count:
           description: available docs
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         docs.deleted:
           description: deleted docs
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         creation.date:
           description: index creation date (millisecond value)
           type: string
@@ -38860,16 +39264,14 @@ components:
           type: string
         store.size:
           description: store size of primaries & replicas
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         pri.store.size:
           description: store size of primaries
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         completion.size:
           description: size of completion
           type: string
@@ -39792,31 +40194,27 @@ components:
           type: string
         docs:
           description: The number of documents in the shard.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         store:
           description: The disk space used by the shard.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         ip:
           description: The IP address of the node.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         id:
           description: The unique identifier for the node.
           type: string
         node:
           description: The name of node.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         sync_id:
           description: The sync identifier.
           type: string
@@ -40146,8 +40544,7 @@ components:
           description: The template version.
           anyOf:
             - $ref: '#/components/schemas/_common:VersionString'
-            - nullable: true
-              type: string
+            - type: 'null'
         composed_of:
           description: The component templates that comprise the index template.
           type: string
@@ -40205,28 +40602,24 @@ components:
           type: string
         core:
           description: The core number of active threads allowed in a scaling thread pool.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         max:
           description: The maximum number of active threads allowed in a scaling thread pool.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         size:
           description: The number of active threads allowed in a fixed thread pool.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         keep_alive:
           description: The thread keep alive time.
-          anyOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
     cluster._common:ComponentTemplate:
       type: object
       properties:
@@ -43444,10 +43837,9 @@ components:
         primary:
           type: boolean
         relocating_node:
-          oneOf:
-            - type: string
-            - nullable: true
-              type: string
+          type:
+            - 'null'
+            - string
         state:
           $ref: '#/components/schemas/indices.stats:ShardRoutingState'
       required:
@@ -44604,7 +44996,45 @@ components:
       required:
         - relation
         - value
-    ml._common:SearchModelHits:
+    ml._common:ModelGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The model group name.
+        latest_version:
+          type: number
+          description: The latest version.
+        description:
+          type: string
+          description: The model group description.
+        access:
+          type: string
+          description: The model group access.
+        created_time:
+          type: integer
+          format: int64
+        last_updated_time:
+          type: integer
+          format: int64
+      required:
+        - access
+        - description
+        - latest_version
+        - name
+    ml._common:ModelGroupRegistration:
+      type: object
+      properties:
+        model_group_id:
+          type: string
+          description: The model group ID.
+        status:
+          type: string
+          description: The status.
+      required:
+        - model_group_id
+        - status
+    ml._common:SearchModelsHits:
       type: object
       properties:
         total:
@@ -44612,11 +45042,11 @@ components:
         hits:
           type: array
           items:
-            $ref: '#/components/schemas/ml._common:SearchModelHitsHit'
+            $ref: '#/components/schemas/ml._common:SearchModelsHitsHit'
       required:
         - hits
         - total
-    ml._common:SearchModelHitsHit:
+    ml._common:SearchModelsHitsHit:
       type: object
       properties:
         _index:
@@ -44631,6 +45061,62 @@ components:
       required:
         - _id
         - model_id
+    ml._common:SearchModelsQuery:
+      type: object
+      properties:
+        query:
+          type: object
+          description: The query.
+        size:
+          type: integer
+          description: The number of models to return.
+      required:
+        - query
+        - size
+    ml._common:SearchModelsResponse:
+      type: object
+      properties:
+        hits:
+          $ref: '#/components/schemas/ml._common:SearchModelsHits'
+      required:
+        - hits
+    ml._common:Task:
+      type: object
+      properties:
+        model_id:
+          type: string
+          description: The model ID.
+        state:
+          type: string
+          description: The state.
+          enum:
+            - CANCELLED
+            - COMPLETED
+            - COMPLETED_WITH_ERROR
+            - CREATED
+            - FAILED
+            - RUNNING
+        task_type:
+          type: string
+          description: Task type.
+          enum:
+            - DEPLOY_MODEL
+        function_name:
+          type: string
+        worker_node:
+          type: array
+          items:
+            $ref: '#/components/schemas/_common:NodeIds'
+        create_time:
+          type: integer
+          format: int64
+        last_update_time:
+          type: integer
+          format: int64
+        is_async:
+          type: boolean
+      required:
+        - state
     nodes._common:AdaptiveSelection:
       type: object
       properties:
@@ -46217,6 +46703,8 @@ components:
           $ref: '#/components/schemas/nodes.info:NodeInfoSettingsIngest'
         index:
           $ref: '#/components/schemas/nodes.info:NodeInfoSettingsIndex'
+        plugins:
+          $ref: '#/components/schemas/nodes.info:NodeInfoSettingsPlugins'
       required:
         - client
         - cluster
@@ -46377,6 +46865,10 @@ components:
       required:
         - attr
         - name
+    nodes.info:NodeInfoSettingsPlugins:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/_common:FieldValue'
     nodes.info:NodeInfoSettingsTransport:
       type: object
       properties:
@@ -48363,6 +48855,86 @@ components:
           $ref: '#/components/schemas/_common:Name'
       required:
         - name
+    sql._common:Explain:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: object
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/sql._common:Explain'
+    sql._common:SqlClose:
+      type: object
+      properties:
+        cursor:
+          type: string
+    sql._common:SqlCloseResponse:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+    sql._common:SqlExplain:
+      type: object
+      properties:
+        query:
+          type: string
+        filter:
+          type: object
+        fetch_size:
+          type: integer
+    sql._common:SqlExplainResponse:
+      type: object
+      properties:
+        root:
+          $ref: '#/components/schemas/sql._common:Explain'
+    sql._common:SqlQuery:
+      type: object
+      properties:
+        query:
+          type: string
+        filter:
+          type: object
+        fetch_size:
+          type: integer
+    sql._common:SqlQueryResponse:
+      type: object
+      properties:
+        schema:
+          type: array
+          items:
+            type: object
+        datarows:
+          type: array
+          items:
+            type: array
+        cursor:
+          type: string
+        total:
+          type: integer
+        size:
+          type: integer
+        status:
+          type: integer
+    sql._common:SqlStats:
+      type: object
+      properties:
+        start_time:
+          type: string
+        end_time:
+          type: object
+        cluster_name:
+          type: object
+        index:
+          type: object
+        query:
+          type: object
+        user:
+          type: object
+        execution_time:
+          type: object
     tasks._common:GroupBy:
       type: string
       enum:
