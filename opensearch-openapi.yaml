@@ -60,6 +60,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.get_alias@200'
+        '404':
+          $ref: '#/components/responses/indices.get_alias@404'
     put:
       operationId: indices.put_alias.0
       x-operation-group: indices.put_alias
@@ -103,6 +105,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.get_alias@200'
+        '404':
+          $ref: '#/components/responses/indices.get_alias@404'
     head:
       operationId: indices.exists_alias.0
       x-operation-group: indices.exists_alias
@@ -124,6 +128,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.exists_alias@200'
+        '404':
+          $ref: '#/components/responses/indices.exists_alias@404'
     post:
       operationId: indices.put_alias.1
       x-operation-group: indices.put_alias
@@ -7104,6 +7110,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/search@200'
+        '400':
+          $ref: '#/components/responses/search@400'
+        '404':
+          $ref: '#/components/responses/search@404'
     post:
       operationId: search.1
       x-operation-group: search
@@ -7168,6 +7178,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/search@200'
+        '400':
+          $ref: '#/components/responses/search@400'
+        '404':
+          $ref: '#/components/responses/search@404'
   /_search_shards:
     get:
       operationId: search_shards.0
@@ -8573,6 +8587,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.get_alias@200'
+        '404':
+          $ref: '#/components/responses/indices.get_alias@404'
     put:
       operationId: indices.put_alias.5
       x-operation-group: indices.put_alias
@@ -8639,6 +8655,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.get_alias@200'
+        '404':
+          $ref: '#/components/responses/indices.get_alias@404'
     head:
       operationId: indices.exists_alias.1
       x-operation-group: indices.exists_alias
@@ -8661,6 +8679,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.exists_alias@200'
+        '404':
+          $ref: '#/components/responses/indices.exists_alias@404'
     post:
       operationId: indices.put_alias.6
       x-operation-group: indices.put_alias
@@ -10098,6 +10118,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/search@200'
+        '400':
+          $ref: '#/components/responses/search@400'
+        '404':
+          $ref: '#/components/responses/search@404'
     post:
       operationId: search.3
       x-operation-group: search
@@ -10163,6 +10187,10 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/search@200'
+        '400':
+          $ref: '#/components/responses/search@400'
+        '404':
+          $ref: '#/components/responses/search@404'
   /{index}/_search_shards:
     get:
       operationId: search_shards.2
@@ -25689,6 +25717,9 @@ components:
     indices.exists_alias@200:
       content:
         application/json: {}
+    indices.exists_alias@404:
+      content:
+        application/json: {}
     indices.exists_index_template@200:
       content:
         application/json: {}
@@ -25726,6 +25757,9 @@ components:
             type: object
             additionalProperties:
               $ref: '#/components/schemas/indices.get_alias:IndexAliases'
+    indices.get_alias@404:
+      content:
+        application/json: {}
     indices.get_data_stream@200:
       content:
         application/json:
@@ -26681,6 +26715,16 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/_core.search:ResponseBody'
+    search@400:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/query._common:ErrorResponse'
+    search@404:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/query._common:ErrorResponse'
     security.authinfo@200:
       content:
         application/json:
@@ -36672,10 +36716,7 @@ components:
             validation_method:
               $ref: '#/components/schemas/_common.query_dsl:GeoValidationMethod'
             ignore_unmapped:
-              description: |-
-                Set to `true` to ignore an unmapped field and not match any documents for this query.
-                Set to `false` to throw an exception if the field is not mapped.
-              type: boolean
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
     _common.query_dsl:GeoDecayFunction:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl:DecayFunctionBase'
@@ -36696,11 +36737,7 @@ components:
             validation_method:
               $ref: '#/components/schemas/_common.query_dsl:GeoValidationMethod'
             ignore_unmapped:
-              description: |-
-                Set to `true` to ignore an unmapped field and not match any documents for this query.
-                Set to `false` to throw an exception if the field is not mapped.
-              type: boolean
-              default: false
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
             field:
               type: object
           required:
@@ -36719,17 +36756,14 @@ components:
             validation_method:
               $ref: '#/components/schemas/_common.query_dsl:GeoValidationMethod'
             ignore_unmapped:
-              type: boolean
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
     _common.query_dsl:GeoShapeQuery:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl:QueryBase'
         - type: object
           properties:
             ignore_unmapped:
-              description: |-
-                Set to `true` to ignore an unmapped field and not match any documents for this query.
-                Set to `false` to throw an exception if the field is not mapped.
-              type: boolean
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
     _common.query_dsl:GeoValidationMethod:
       type: string
       enum:
@@ -36742,8 +36776,8 @@ components:
         - type: object
           properties:
             ignore_unmapped:
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
               description: Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.
-              type: boolean
             inner_hits:
               $ref: '#/components/schemas/_core.search:InnerHits'
             max_children:
@@ -36771,10 +36805,10 @@ components:
         - type: object
           properties:
             ignore_unmapped:
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
               description: |-
                 Indicates whether to ignore an unmapped `parent_type` and not return any documents instead of an error.
                 You can use this parameter to query multiple indices that may not contain the `parent_type`.
-              type: boolean
             inner_hits:
               $ref: '#/components/schemas/_core.search:InnerHits'
             parent_type:
@@ -36794,6 +36828,12 @@ components:
           properties:
             values:
               $ref: '#/components/schemas/_common:Ids'
+    _common.query_dsl:IgnoreUnmapped:
+      type: boolean
+      default: false
+      description: |-
+        Set to `true` to ignore an unmapped field and not match any documents for this query.
+        Set to `false` to throw an exception if the field is not mapped.
     _common.query_dsl:IntervalsAllOf:
       type: object
       properties:
@@ -37261,8 +37301,8 @@ components:
         - type: object
           properties:
             ignore_unmapped:
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
               description: Indicates whether to ignore an unmapped path and not return any documents instead of an error.
-              type: boolean
             inner_hits:
               $ref: '#/components/schemas/_core.search:InnerHits'
             path:
@@ -37287,7 +37327,7 @@ components:
           type: string
         query_image:
           type: string
-          format: binary
+          contentEncoding: base64
         model_id:
           type: string
         k:
@@ -37298,8 +37338,6 @@ components:
           type: number
         filter:
           $ref: '#/components/schemas/_common.query_dsl:QueryContainer'
-      required:
-        - model_id
     _common.query_dsl:NumberRangeQuery:
       allOf:
         - $ref: '#/components/schemas/_common.query_dsl:RangeQueryBase'
@@ -37344,8 +37382,8 @@ components:
             id:
               $ref: '#/components/schemas/_common:Id'
             ignore_unmapped:
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
               description: Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.
-              type: boolean
             type:
               $ref: '#/components/schemas/_common:RelationName'
     _common.query_dsl:PercolateQuery:
@@ -37897,8 +37935,7 @@ components:
         - type: object
           properties:
             ignore_unmapped:
-              description: When set to `true` the query ignores an unmapped field and will not match any documents.
-              type: boolean
+              $ref: '#/components/schemas/_common.query_dsl:IgnoreUnmapped'
     _common.query_dsl:SimpleQueryStringFlag:
       type: string
       enum:
@@ -48971,10 +49008,8 @@ components:
             $ref: '#/components/schemas/query._common:RootCause'
         type:
           type: string
-          example: status_exception
         reason:
           type: string
-          example: DataSource not found
       required:
         - reason
         - root_cause
@@ -48984,10 +49019,8 @@ components:
       properties:
         type:
           type: string
-          example: status_exception
         reason:
           type: string
-          example: DataSource not found
       required:
         - reason
         - type
