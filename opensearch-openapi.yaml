@@ -32145,8 +32145,10 @@ components:
         - index-setting
     _common:WaitForActiveShards:
       oneOf:
-        - type: number
-        - $ref: '#/components/schemas/_common:WaitForActiveShardOptions'
+        - title: count
+          type: integer
+        - title: option
+          $ref: '#/components/schemas/_common:WaitForActiveShardOptions'
     _common:WaitForEvents:
       type: string
       enum:
@@ -34740,7 +34742,7 @@ components:
           type: boolean
     _common.aggregations:NestedAggregate:
       allOf:
-        - $ref: '#/components/schemas/_common.aggregations:SingleBucketAggregateBase'
+        - $ref: '#/components/schemas/_common.aggregations:AggregateBase'
         - type: object
           properties:
             doc_count:
