@@ -1205,6 +1205,7 @@ paths:
         - $ref: '#/components/parameters/cat.snapshots___query.help'
         - $ref: '#/components/parameters/cat.snapshots___query.ignore_unavailable'
         - $ref: '#/components/parameters/cat.snapshots___query.master_timeout'
+        - $ref: '#/components/parameters/cat.snapshots___query.repository'
         - $ref: '#/components/parameters/cat.snapshots___query.s'
         - $ref: '#/components/parameters/cat.snapshots___query.time'
         - $ref: '#/components/parameters/cat.snapshots___query.v'
@@ -1232,6 +1233,7 @@ paths:
         - $ref: '#/components/parameters/cat.snapshots___query.help'
         - $ref: '#/components/parameters/cat.snapshots___query.ignore_unavailable'
         - $ref: '#/components/parameters/cat.snapshots___query.master_timeout'
+        - $ref: '#/components/parameters/cat.snapshots___query.repository'
         - $ref: '#/components/parameters/cat.snapshots___query.s'
         - $ref: '#/components/parameters/cat.snapshots___query.time'
         - $ref: '#/components/parameters/cat.snapshots___query.v'
@@ -9485,6 +9487,7 @@ paths:
       operationId: indices.get_upgrade.0
       x-operation-group: indices.get_upgrade
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: The `_upgrade` API is no longer useful and will be removed.
       externalDocs:
         url: https://opensearch.org/docs/latest
@@ -9504,6 +9507,7 @@ paths:
       operationId: indices.upgrade.0
       x-operation-group: indices.upgrade
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: The `_upgrade` API is no longer useful and will be removed.
       externalDocs:
         url: https://opensearch.org/docs/latest
@@ -9518,6 +9522,8 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.upgrade'
       responses:
         '200':
           $ref: '#/components/responses/indices.upgrade___200'
@@ -12215,6 +12221,7 @@ paths:
       operationId: indices.get_upgrade.1
       x-operation-group: indices.get_upgrade
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: The `_upgrade` API is no longer useful and will be removed.
       externalDocs:
         url: https://opensearch.org/docs/latest
@@ -12235,6 +12242,7 @@ paths:
       operationId: indices.upgrade.1
       x-operation-group: indices.upgrade
       x-version-added: '1.0'
+      x-version-deprecated: '1.0'
       description: The `_upgrade` API is no longer useful and will be removed.
       externalDocs:
         url: https://opensearch.org/docs/latest
@@ -12250,6 +12258,8 @@ paths:
         - $ref: '#/components/parameters/_global___query.error_trace'
         - $ref: '#/components/parameters/_global___query.source'
         - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/indices.upgrade'
       responses:
         '200':
           $ref: '#/components/responses/indices.upgrade___200'
@@ -16583,6 +16593,17 @@ components:
       x-version-deprecated: '2.0'
       x-deprecation-message: To promote inclusive language, use `cluster_manager_timeout` instead.
       deprecated: true
+    cat.snapshots___query.repository:
+      in: query
+      name: repository
+      description: |-
+        A comma-separated list of snapshot repositories used to limit the request.
+        Accepts wildcard expressions.
+        `_all` returns all repositories.
+        If any repository fails during the request, OpenSearch returns an error.
+      required: true
+      schema:
+        $ref: '#/components/schemas/_common___Names'
     cat.snapshots___query.s:
       name: s
       in: query
@@ -26659,6 +26680,11 @@ components:
                   $ref: '#/components/schemas/indices.update_aliases___Action'
             description: The definition of `actions` to perform
       required: true
+    indices.upgrade:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/indices._common___UpgradeRequest'
     indices.validate_query:
       content:
         application/json:
@@ -29178,6 +29204,10 @@ components:
               $ref: '#/components/schemas/indices._common___TemplateMapping'
       description: ''
     indices.get_upgrade___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/indices._common___IndexGetUpgradeStatus'
       description: ''
     indices.get___200:
       content:
@@ -29415,6 +29445,10 @@ components:
             $ref: '#/components/schemas/_common___AcknowledgedResponseBase'
       description: ''
     indices.upgrade___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/indices._common___IndexPostUpgradeStatus'
       description: ''
     indices.validate_query___200:
       content:
@@ -30444,6 +30478,8 @@ components:
                     $ref: '#/components/schemas/_core.search___Suggest'
               terminated_early:
                 type: boolean
+              status:
+                type: number
             required:
               - _shards
               - hits
@@ -43296,6 +43332,8 @@ components:
           $ref: '#/components/schemas/_common___IndexName'
         _score:
           type: number
+        _type:
+          $ref: '#/components/schemas/_common___Type'
       required:
         - _id
         - _index
@@ -43353,7 +43391,7 @@ components:
           additionalProperties:
             type: object
             additionalProperties:
-              type: object
+              type: number
       required:
         - hits
         - metric_details
@@ -49099,6 +49137,19 @@ components:
       additionalProperties:
         title: metadata
         description: Additional details about the error.
+    indices._common___IndexGetUpgradeStatus:
+      type: object
+      properties:
+        size_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+        size_to_upgrade_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+        size_to_upgrade_ancient_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+        indices:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/indices._common___UpgradeStatus'
     indices._common___IndexingPressure:
       type: object
       properties:
@@ -49134,6 +49185,15 @@ components:
       properties:
         index:
           $ref: '#/components/schemas/indices._common___SlowlogThresholdLevels'
+    indices._common___IndexPostUpgradeStatus:
+      type: object
+      properties:
+        _shards:
+          $ref: '#/components/schemas/_common___ShardStatistics'
+        upgraded_indices:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/indices._common___UpgradeVersionStatus'
     indices._common___IndexRouting:
       type: object
       properties:
@@ -50098,6 +50158,38 @@ components:
           $ref: '#/components/schemas/_common___HumanReadableByteCount'
         age:
           $ref: '#/components/schemas/_common___Duration'
+    indices._common___UpgradeRequest:
+      type: object
+      properties:
+        allow_no_indices:
+          type: boolean
+        expand_wildcards:
+          type: string
+          enum:
+            - all
+            - closed
+            - none
+            - open
+        ignore_unavailable:
+          type: boolean
+        wait_for_completion:
+          type: boolean
+    indices._common___UpgradeStatus:
+      type: object
+      properties:
+        size_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+        size_to_upgrade_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+        size_to_upgrade_ancient_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+    indices._common___UpgradeVersionStatus:
+      type: object
+      properties:
+        upgrade_version:
+          $ref: '#/components/schemas/_common___VersionString'
+        oldest_lucene_segment_version:
+          $ref: '#/components/schemas/_common___VersionString'
     indices.add_block___IndicesBlockOptions:
       type: string
       enum:
