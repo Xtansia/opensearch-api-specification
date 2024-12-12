@@ -15206,63 +15206,63 @@ components:
     cat.aliases___query.expand_wildcards:
       in: query
       name: expand_wildcards
-      description: Whether to expand wildcard expression to concrete indexes that are open, closed or both.
+      description: Expands wildcard expressions to concrete indexes. Combine multiple values with commas. Supported values are `all`, `open`, `closed`, `hidden`, and `none`.
       schema:
         $ref: '#/components/schemas/_common___ExpandWildcards'
       style: form
     cat.aliases___query.format:
       name: format
       in: query
-      description: A short version of the Accept header (for example, `json`, `yaml`).
+      description: A short version of the `Accept` header, such as `json` or `yaml`.
       schema:
         type: string
-        description: A short version of the Accept header (for example, `json`, `yaml`).
+        description: A short version of the `Accept` header, such as `json` or `yaml`.
     cat.aliases___query.h:
       name: h
       in: query
-      description: Comma-separated list of column names to display.
+      description: A comma-separated list of column names to display.
       style: form
       schema:
         type: array
         items:
           type: string
-        description: Comma-separated list of column names to display.
+        description: A comma-separated list of column names to display.
       explode: true
     cat.aliases___query.help:
       name: help
       in: query
-      description: Return help information.
+      description: Returns help information.
       schema:
-        description: Return help information.
+        description: Returns help information.
         type: boolean
         default: false
     cat.aliases___query.local:
       name: local
       in: query
-      description: Return local information, do not retrieve the state from cluster-manager node.
+      description: Whether to return information from the local node only instead of from the cluster manager node.
       schema:
         type: boolean
         default: false
-        description: Return local information, do not retrieve the state from cluster-manager node.
+        description: Whether to return information from the local node only instead of from the cluster manager node.
     cat.aliases___query.s:
       name: s
       in: query
-      description: Comma-separated list of column names or column aliases to sort by.
+      description: A comma-separated list of column names or column aliases to sort by.
       style: form
       schema:
         type: array
         items:
           type: string
-        description: Comma-separated list of column names or column aliases to sort by.
+        description: A comma-separated list of column names or column aliases to sort by.
       explode: true
     cat.aliases___query.v:
       name: v
       in: query
-      description: Verbose mode. Display column headers.
+      description: Enables verbose mode, which displays column headers.
       schema:
         type: boolean
         default: false
-        description: Verbose mode. Display column headers.
+        description: Enables verbose mode, which displays column headers.
     cat.all_pit_segments___query.bytes:
       name: bytes
       in: query
@@ -15317,7 +15317,7 @@ components:
     cat.allocation___path.node_id:
       in: path
       name: node_id
-      description: Comma-separated list of node identifiers or names used to limit the returned information.
+      description: A comma-separated list of node IDs or names used to limit the returned information.
       required: true
       schema:
         $ref: '#/components/schemas/_common___NodeIds'
@@ -15325,55 +15325,55 @@ components:
     cat.allocation___query.bytes:
       in: query
       name: bytes
-      description: The unit used to display byte values.
+      description: The units used to display byte values.
       schema:
         $ref: '#/components/schemas/_common___ByteUnit'
       style: form
     cat.allocation___query.cluster_manager_timeout:
       name: cluster_manager_timeout
       in: query
-      description: Operation timeout for connection to cluster-manager node.
+      description: A timeout for connection to the cluster manager node.
       schema:
         $ref: '#/components/schemas/_common___Duration'
       x-version-added: '2.0'
     cat.allocation___query.format:
       name: format
       in: query
-      description: A short version of the Accept header (for example, `json`, `yaml`).
+      description: A short version of the HTTP `Accept` header, such as `json` or `yaml`.
       schema:
         type: string
-        description: A short version of the Accept header (for example, `json`, `yaml`).
+        description: A short version of the HTTP `Accept` header, such as `json` or `yaml`.
     cat.allocation___query.h:
       name: h
       in: query
-      description: Comma-separated list of column names to display.
+      description: A comma-separated list of column names to display.
       style: form
       schema:
         type: array
         items:
           type: string
-        description: Comma-separated list of column names to display.
+        description: A comma-separated list of column names to display.
       explode: true
     cat.allocation___query.help:
       name: help
       in: query
-      description: Return help information.
+      description: Returns help information.
       schema:
         type: boolean
         default: false
-        description: Return help information.
+        description: Returns help information.
     cat.allocation___query.local:
       name: local
       in: query
-      description: Return local information, do not retrieve the state from cluster-manager node.
+      description: Returns local information but does not retrieve the state from cluster-manager node.
       schema:
         type: boolean
         default: false
-        description: Return local information, do not retrieve the state from cluster-manager node.
+        description: Returns local information but does not retrieve the state from cluster-manager node.
     cat.allocation___query.master_timeout:
       name: master_timeout
       in: query
-      description: Operation timeout for connection to cluster-manager node.
+      description: A timeout for connection to the cluster manager node.
       schema:
         $ref: '#/components/schemas/_common___Duration'
       x-version-deprecated: '2.0'
@@ -15382,46 +15382,46 @@ components:
     cat.allocation___query.s:
       name: s
       in: query
-      description: Comma-separated list of column names or column aliases to sort by.
+      description: A comma-separated list of column names or column aliases to sort by.
       style: form
       schema:
         type: array
         items:
           type: string
-        description: Comma-separated list of column names or column aliases to sort by.
+        description: A comma-separated list of column names or column aliases to sort by.
       explode: true
     cat.allocation___query.v:
       name: v
       in: query
-      description: Verbose mode. Display column headers.
+      description: Enables verbose mode, which displays column headers.
       schema:
         type: boolean
         default: false
-        description: Verbose mode. Display column headers.
+        description: Enables verbose mode, which displays column headers.
     cat.cluster_manager___query.cluster_manager_timeout:
       name: cluster_manager_timeout
       in: query
-      description: Operation timeout for connection to cluster-manager node.
+      description: A timeout for connection to the cluster manager node.
       schema:
         $ref: '#/components/schemas/_common___Duration'
       x-version-added: '2.0'
     cat.cluster_manager___query.format:
       name: format
       in: query
-      description: A short version of the Accept header (for example, `json`, `yaml`).
+      description: A short version of the HTTP `Accept` header, such as `json` or `yaml`.
       schema:
         type: string
-        description: A short version of the Accept header (for example, `json`, `yaml`).
+        description: A short version of the HTTP `Accept` header, such as `json` or `yaml`.
     cat.cluster_manager___query.h:
       name: h
       in: query
-      description: Comma-separated list of column names to display.
+      description: A comma-separated list of column names to display.
       style: form
       schema:
         type: array
         items:
           type: string
-        description: Comma-separated list of column names to display.
+        description: A comma-separated list of column names to display.
       explode: true
     cat.cluster_manager___query.help:
       name: help
@@ -15442,7 +15442,7 @@ components:
     cat.cluster_manager___query.master_timeout:
       name: master_timeout
       in: query
-      description: Operation timeout for connection to cluster-manager node.
+      description: A timeout for connection to the cluster manager node.
       schema:
         $ref: '#/components/schemas/_common___Duration'
       x-version-deprecated: '2.0'
@@ -15451,22 +15451,22 @@ components:
     cat.cluster_manager___query.s:
       name: s
       in: query
-      description: Comma-separated list of column names or column aliases to sort by.
+      description: A comma-separated list of column names or column aliases to sort by.
       style: form
       schema:
         type: array
         items:
           type: string
-        description: Comma-separated list of column names or column aliases to sort by.
+        description: A comma-separated list of column names or column aliases to sort by.
       explode: true
     cat.cluster_manager___query.v:
       name: v
       in: query
-      description: Verbose mode. Display column headers.
+      description: Enables verbose mode, which displays column headers.
       schema:
         type: boolean
         default: false
-        description: Verbose mode. Display column headers.
+        description: Enables verbose mode, which displays column headers.
     cat.count___path.index:
       in: path
       name: index
@@ -21008,7 +21008,8 @@ components:
         Templates with lower 'order' values are merged first. Templates with higher
         'order' values are merged later, overriding templates with lower values.
       schema:
-        type: number
+        type: integer
+        format: int32
       style: form
     indices.recovery___path.index:
       in: path
@@ -26781,6 +26782,7 @@ components:
       content:
         application/json:
           schema:
+            title: settings
             $ref: '#/components/schemas/indices._common___IndexSettings'
       required: true
     indices.put_template:
@@ -26907,6 +26909,7 @@ components:
       content:
         application/json:
           schema:
+            title: template
             $ref: '#/components/schemas/indices._common___IndexTemplate'
     indices.split:
       content:
@@ -27049,12 +27052,61 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ml._common___CreateConnectorRequest'
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              version:
+                type: integer
+              protocol:
+                type: string
+              credential:
+                $ref: '#/components/schemas/ml._common___Credential'
+              parameters:
+                $ref: '#/components/schemas/ml._common___Parameters'
+              client_config:
+                $ref: '#/components/schemas/ml._common___ClientConfig'
+              actions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ml._common___Action'
+            required:
+              - actions
+              - credential
+              - description
+              - name
+              - parameters
+              - protocol
+              - version
     ml.register_agents:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ml._common___RegisterAgentsRequest'
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              description:
+                type: string
+              tools:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ml._common___ToolItems'
+              parameters:
+                $ref: '#/components/schemas/ml._common___Parameters'
+              app_type:
+                type: string
+              memory:
+                $ref: '#/components/schemas/ml._common___Memory'
+              llm:
+                $ref: '#/components/schemas/ml._common___LLM'
+            required:
+              - name
+              - type
     ml.register_model:
       content:
         application/json:
@@ -27116,7 +27168,17 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ml._common___SearchModelsQuery'
+            type: object
+            properties:
+              query:
+                type: object
+                description: The query.
+              size:
+                type: integer
+                description: The number of models to return.
+            required:
+              - query
+              - size
     msearch:
       content:
         application/x-ndjson:
@@ -27312,16 +27374,15 @@ components:
           schema:
             type: object
             properties:
-              file:
-                type: string
+              id:
+                $ref: '#/components/schemas/_common___Id'
               params:
                 description: |-
                   Key-value pairs used to replace Mustache variables in the template.
                   The key is the variable name.
                   The value is the variable value.
                 type: object
-                additionalProperties:
-                  type: object
+                additionalProperties: true
               source:
                 description: |-
                   An inline search template.
@@ -29305,16 +29366,18 @@ components:
                 $ref: '#/components/schemas/_common___ShardStatistics'
               backing_indices:
                 description: Total number of backing indexes for the selected data streams.
-                type: number
+                type: integer
+                format: int32
               data_stream_count:
                 description: Total number of selected data streams.
-                type: number
+                type: integer
+                format: int32
               data_streams:
                 description: Contains statistics for the selected data streams.
                 type: array
                 items:
-                  $ref: '#/components/schemas/indices.data_streams_stats___DataStreamsStatsItem'
-              total_store_sizes:
+                  $ref: '#/components/schemas/indices._common___DataStreamStats'
+              total_store_size:
                 $ref: '#/components/schemas/_common___HumanReadableByteCount'
               total_store_size_bytes:
                 description: Total size, in bytes, of all shards for the selected data streams.
@@ -32706,17 +32769,27 @@ components:
         - time_in_millis
         - total
     _common___HealthStatus:
-      type: string
-      enum:
-        - green
-        - red
-        - yellow
-    _common___HealthStatusCapitalized:
-      type: string
-      enum:
-        - GREEN
-        - RED
-        - YELLOW
+      oneOf:
+        - description: All shards are assigned.
+          type: string
+          enum:
+            - green
+            - GREEN
+        - description: |
+            All primary shards are assigned, but one or more replica shards are
+            unassigned. If a node in the cluster fails, some data could be unavailable
+            until that node is repaired.
+          type: string
+          enum:
+            - yellow
+            - YELLOW
+        - description: |
+            One or more primary shards are unassigned, so some data is unavailable. This
+            can occur briefly during cluster startup as primary shards are assigned.
+          type: string
+          enum:
+            - red
+            - RED
     _common___Host:
       type: string
     _common___HourAndMinute:
@@ -49504,7 +49577,8 @@ components:
           type: boolean
         generation:
           description: Current generation for the data stream. This number acts as a cumulative count of the stream's rollovers, starting at 1.
-          type: number
+          type: integer
+          format: int64
         hidden:
           description: If `true`, the data stream is hidden.
           type: boolean
@@ -49528,7 +49602,7 @@ components:
           description: If `true`, the data stream is created and managed by cross-cluster replication and the local cluster can not write into this data stream or change its mappings.
           type: boolean
         status:
-          $ref: '#/components/schemas/_common___HealthStatusCapitalized'
+          $ref: '#/components/schemas/_common___HealthStatus'
         system:
           description: If `true`, the data stream is created and managed by an OpenSearch stack component and cannot be modified through normal user interaction.
           type: boolean
@@ -49560,6 +49634,27 @@ components:
       required:
         - index_name
         - index_uuid
+    indices._common___DataStreamStats:
+      type: object
+      properties:
+        backing_indices:
+          description: Current number of backing indexes for the data stream.
+          type: integer
+          format: int32
+        data_stream:
+          $ref: '#/components/schemas/_common___Name'
+        maximum_timestamp:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
+        store_size:
+          $ref: '#/components/schemas/_common___HumanReadableByteCount'
+        store_size_bytes:
+          description: Total size, in bytes, of all shards for the data stream's backing indexes.
+          $ref: '#/components/schemas/_common___ByteCount'
+      required:
+        - backing_indices
+        - data_stream
+        - maximum_timestamp
+        - store_size_bytes
     indices._common___DataStreamTimestampField:
       type: object
       properties:
@@ -50823,26 +50918,6 @@ components:
             $ref: '#/components/schemas/_common___ShardFailure'
       required:
         - failures
-    indices.data_streams_stats___DataStreamsStatsItem:
-      type: object
-      properties:
-        backing_indices:
-          description: Current number of backing indexes for the data stream.
-          type: number
-        data_stream:
-          $ref: '#/components/schemas/_common___Name'
-        maximum_timestamp:
-          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
-        store_size:
-          $ref: '#/components/schemas/_common___HumanReadableByteCount'
-        store_size_bytes:
-          description: Total size, in bytes, of all shards for the data stream's backing indexes.
-          $ref: '#/components/schemas/_common___ByteCount'
-      required:
-        - backing_indices
-        - data_stream
-        - maximum_timestamp
-        - store_size_bytes
     indices.get_alias___IndexAliases:
       type: object
       properties:
@@ -53390,7 +53465,7 @@ components:
           type: boolean
         model_index_status:
           oneOf:
-            - $ref: '#/components/schemas/_common___HealthStatusCapitalized'
+            - $ref: '#/components/schemas/_common___HealthStatus'
             - type: 'null'
         nodes:
           type: object
@@ -53467,35 +53542,6 @@ components:
           type: integer
         retry_timeout_seconds:
           type: integer
-    ml._common___CreateConnectorRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        version:
-          type: integer
-        protocol:
-          type: string
-        credential:
-          $ref: '#/components/schemas/ml._common___Credential'
-        parameters:
-          $ref: '#/components/schemas/ml._common___Parameters'
-        client_config:
-          $ref: '#/components/schemas/ml._common___ClientConfig'
-        actions:
-          type: array
-          items:
-            $ref: '#/components/schemas/ml._common___Action'
-      required:
-        - actions
-        - credential
-        - description
-        - name
-        - parameters
-        - protocol
-        - version
     ml._common___Credential:
       type: object
       properties:
@@ -53594,30 +53640,6 @@ components:
     ml._common___Parameters:
       type: object
       additionalProperties: true
-    ml._common___RegisterAgentsRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-        description:
-          type: string
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/ml._common___ToolItems'
-        parameters:
-          $ref: '#/components/schemas/ml._common___Parameters'
-        app_type:
-          type: string
-        memory:
-          $ref: '#/components/schemas/ml._common___Memory'
-        llm:
-          $ref: '#/components/schemas/ml._common___LLM'
-      required:
-        - name
-        - type
     ml._common___SearchModelsHits:
       type: object
       properties:
@@ -53658,18 +53680,6 @@ components:
           $ref: '#/components/schemas/_common___Name'
       required:
         - _score
-    ml._common___SearchModelsQuery:
-      type: object
-      properties:
-        query:
-          type: object
-          description: The query.
-        size:
-          type: integer
-          description: The number of models to return.
-      required:
-        - query
-        - size
     ml._common___SearchModelsResponse:
       type: object
       properties:
