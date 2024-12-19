@@ -6521,6 +6521,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/security.update_distinguished_name___200'
+        '201':
+          $ref: '#/components/responses/security.update_distinguished_name___201'
         '400':
           $ref: '#/components/responses/security.update_distinguished_name___400'
         '403':
@@ -8009,7 +8011,7 @@ paths:
       operationId: reindex_rethrottle.0
       x-operation-group: reindex_rethrottle
       x-version-added: '1.0'
-      description: Changes the number of requests per second for a particular Reindex operation.
+      description: Changes the number of requests per second for a particular reindex operation.
       externalDocs:
         url: https://opensearch.org/docs/latest
       parameters:
@@ -14044,6 +14046,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/security.update_distinguished_name___200'
+        '201':
+          $ref: '#/components/responses/security.update_distinguished_name___201'
         '400':
           $ref: '#/components/responses/security.update_distinguished_name___400'
         '403':
@@ -27462,9 +27466,6 @@ components:
                 $ref: '#/components/schemas/_common___Duration'
               scroll_id:
                 $ref: '#/components/schemas/_common___ScrollId'
-            required:
-              - scroll_id
-            description: The scroll ID if not passed by URL or query parameter.
     search:
       content:
         application/json:
@@ -27791,7 +27792,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/security._common___PatchOperation'
+            $ref: '#/components/schemas/security._common___PatchOperations'
     security.patch_distinguished_names:
       content:
         application/json:
@@ -31212,7 +31213,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/security._common___DistinguishedNames'
+            $ref: '#/components/schemas/security._common___DistinguishedNamesMap'
     security.get_distinguished_name___400:
       content:
         application/json:
@@ -31636,6 +31637,12 @@ components:
           schema:
             $ref: '#/components/schemas/security._common___Ok'
       description: ''
+    security.update_distinguished_name___201:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/security._common___Ok'
+      description: ''
     security.update_distinguished_name___400:
       content:
         application/json:
@@ -31851,7 +31858,7 @@ components:
               snapshots:
                 type: array
                 items:
-                  $ref: '#/components/schemas/snapshot._common___Status'
+                  $ref: '#/components/schemas/snapshot._common___SnapshotStatus'
             required:
               - snapshots
       description: ''
@@ -31955,8 +31962,9 @@ components:
                 format: int64
               _version:
                 $ref: '#/components/schemas/_common___VersionNumber'
+              _type:
+                $ref: '#/components/schemas/_common___Type'
             required:
-              - _id
               - _index
               - _version
               - found
@@ -43617,7 +43625,9 @@ components:
             The value is the variable value.
           type: object
           additionalProperties:
-            type: object
+            oneOf:
+              - type: string
+              - type: object
         profile:
           description: When `true`, provides a profile for the query execution.
           type: boolean
@@ -43861,6 +43871,8 @@ components:
             $ref: '#/components/schemas/_core.termvectors___TermVector'
         error:
           $ref: '#/components/schemas/_common___ErrorCause'
+        _type:
+          $ref: '#/components/schemas/_common___Type'
       required:
         - _id
         - _index
@@ -44102,12 +44114,16 @@ components:
           type: string
         cancellable:
           type: boolean
+        cancelled:
+          type: boolean
         description:
           type: string
         id:
           type: number
         node:
           $ref: '#/components/schemas/_common___Name'
+        resource_stats:
+          $ref: '#/components/schemas/_common___ResourceStats'
         running_time_in_nanos:
           $ref: '#/components/schemas/_common___DurationValueUnitNanos'
         start_time_in_millis:
@@ -57986,6 +58002,10 @@ components:
       required:
         - op
         - path
+    security._common___PatchOperations:
+      type: array
+      items:
+        $ref: '#/components/schemas/security._common___PatchOperation'
     security._common___PermissionsInfo:
       type: object
       properties:
@@ -58629,82 +58649,6 @@ components:
           $ref: '#/components/schemas/_common___StringifiedBoolean'
       required:
         - location
-    snapshot._common___ShardsStats:
-      type: object
-      properties:
-        done:
-          type: integer
-          format: int64
-        failed:
-          type: integer
-          format: int64
-        finalizing:
-          type: integer
-          format: int64
-        initializing:
-          type: integer
-          format: int64
-        started:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-      required:
-        - done
-        - failed
-        - finalizing
-        - initializing
-        - started
-        - total
-    snapshot._common___ShardsStatsStage:
-      oneOf:
-        - type: string
-          const: DONE
-          description: Number of shards in the snapshot that were successfully stored in the repository.
-        - type: string
-          const: FAILURE
-          description: Number of shards in the snapshot that were not successfully stored in the repository.
-        - type: string
-          const: FINALIZE
-          description: Number of shards in the snapshot that are in the finalizing stage of being stored in the repository.
-        - type: string
-          const: INIT
-          description: Number of shards in the snapshot that are in the initializing stage of being stored in the repository.
-        - type: string
-          const: STARTED
-          description: Number of shards in the snapshot that are in the started stage of being stored in the repository.
-    snapshot._common___ShardsStatsSummary:
-      type: object
-      properties:
-        incremental:
-          $ref: '#/components/schemas/snapshot._common___ShardsStatsSummaryItem'
-        processed:
-          $ref: '#/components/schemas/snapshot._common___ShardsStatsSummaryItem'
-        total:
-          $ref: '#/components/schemas/snapshot._common___ShardsStatsSummaryItem'
-        start_time_in_millis:
-          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
-        time:
-          $ref: '#/components/schemas/_common___Duration'
-        time_in_millis:
-          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
-      required:
-        - incremental
-        - start_time_in_millis
-        - time_in_millis
-        - total
-    snapshot._common___ShardsStatsSummaryItem:
-      type: object
-      properties:
-        file_count:
-          type: integer
-          format: int64
-        size_in_bytes:
-          $ref: '#/components/schemas/_common___ByteCount'
-      required:
-        - file_count
-        - size_in_bytes
     snapshot._common___SnapshotIndexStats:
       type: object
       properties:
@@ -58713,7 +58657,7 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/snapshot._common___SnapshotShardsStatus'
         shards_stats:
-          $ref: '#/components/schemas/snapshot._common___ShardsStats'
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStats'
         stats:
           $ref: '#/components/schemas/snapshot._common___SnapshotStats'
       required:
@@ -58791,6 +58735,82 @@ components:
         - reason
         - shard_id
         - status
+    snapshot._common___SnapshotShardsStats:
+      type: object
+      properties:
+        done:
+          type: integer
+          format: int64
+        failed:
+          type: integer
+          format: int64
+        finalizing:
+          type: integer
+          format: int64
+        initializing:
+          type: integer
+          format: int64
+        started:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+      required:
+        - done
+        - failed
+        - finalizing
+        - initializing
+        - started
+        - total
+    snapshot._common___SnapshotShardsStatsStage:
+      oneOf:
+        - type: string
+          const: DONE
+          description: Number of shards in the snapshot that were successfully stored in the repository.
+        - type: string
+          const: FAILURE
+          description: Number of shards in the snapshot that were not successfully stored in the repository.
+        - type: string
+          const: FINALIZE
+          description: Number of shards in the snapshot that are in the finalizing stage of being stored in the repository.
+        - type: string
+          const: INIT
+          description: Number of shards in the snapshot that are in the initializing stage of being stored in the repository.
+        - type: string
+          const: STARTED
+          description: Number of shards in the snapshot that are in the started stage of being stored in the repository.
+    snapshot._common___SnapshotShardsStatsSummary:
+      type: object
+      properties:
+        incremental:
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStatsSummaryItem'
+        processed:
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStatsSummaryItem'
+        total:
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStatsSummaryItem'
+        start_time_in_millis:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
+        time:
+          $ref: '#/components/schemas/_common___Duration'
+        time_in_millis:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+      required:
+        - incremental
+        - start_time_in_millis
+        - time_in_millis
+        - total
+    snapshot._common___SnapshotShardsStatsSummaryItem:
+      type: object
+      properties:
+        file_count:
+          type: integer
+          format: int64
+        size_in_bytes:
+          $ref: '#/components/schemas/_common___ByteCount'
+      required:
+        - file_count
+        - size_in_bytes
     snapshot._common___SnapshotShardsStatus:
       type: object
       properties:
@@ -58799,9 +58819,9 @@ components:
         reason:
           type: string
         stage:
-          $ref: '#/components/schemas/snapshot._common___ShardsStatsStage'
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStatsStage'
         stats:
-          $ref: '#/components/schemas/snapshot._common___ShardsStatsSummary'
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStatsSummary'
       required:
         - stage
         - stats
@@ -58825,7 +58845,7 @@ components:
         - start_time_in_millis
         - time_in_millis
         - total
-    snapshot._common___Status:
+    snapshot._common___SnapshotStatus:
       type: object
       properties:
         include_global_state:
@@ -58837,7 +58857,7 @@ components:
         repository:
           type: string
         shards_stats:
-          $ref: '#/components/schemas/snapshot._common___ShardsStats'
+          $ref: '#/components/schemas/snapshot._common___SnapshotShardsStats'
         snapshot:
           type: string
         state:
@@ -59117,6 +59137,8 @@ components:
           type: boolean
         cancellable:
           type: boolean
+        cancellation_time_millis:
+          $ref: '#/components/schemas/_common___EpochTimeUnitMillis'
         description:
           type: string
         headers:
