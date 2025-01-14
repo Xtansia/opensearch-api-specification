@@ -3646,7 +3646,7 @@ paths:
       operationId: asynchronous_search.search.0
       x-operation-group: asynchronous_search.search
       x-version-added: '1.0'
-      description: Perform an asynchronous search.
+      description: Performs an asynchronous search.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#rest-api
       parameters:
@@ -3669,7 +3669,7 @@ paths:
       operationId: asynchronous_search.delete.0
       x-operation-group: asynchronous_search.delete
       x-version-added: '1.0'
-      description: Delete asynchronous search.
+      description: Deletes any responses from an asynchronous search.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#delete-searches-and-results
       parameters:
@@ -3686,7 +3686,7 @@ paths:
       operationId: asynchronous_search.get.0
       x-operation-group: asynchronous_search.get
       x-version-added: '1.0'
-      description: Get partial responses from asynchronous search.
+      description: Gets partial responses from an asynchronous search.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#get-partial-results
       parameters:
@@ -3704,7 +3704,7 @@ paths:
       operationId: asynchronous_search.stats.0
       x-operation-group: asynchronous_search.stats
       x-version-added: '1.0'
-      description: Monitoring of asynchronous searches that are running, completed, and/or persisted.
+      description: Monitors any asynchronous searches that are `running`, `completed`, `persisted`.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#monitor-stats
       responses:
@@ -4814,6 +4814,71 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ml.update_connector___200'
+  /_plugins/_ml/controllers/{model_id}:
+    delete:
+      operationId: ml.delete_controller.0
+      x-operation-group: ml.delete_controller
+      x-version-added: '2.12'
+      description: Deletes a controller.
+      parameters:
+        - $ref: '#/components/parameters/ml.delete_controller___path.model_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ml.delete_controller___200'
+    get:
+      operationId: ml.get_controller.0
+      x-operation-group: ml.get_controller
+      x-version-added: '2.12'
+      description: Retrieves a controller.
+      parameters:
+        - $ref: '#/components/parameters/ml.get_controller___path.model_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ml.get_controller___200'
+    post:
+      operationId: ml.create_controller.0
+      x-operation-group: ml.create_controller
+      x-version-added: '2.12'
+      description: Creates a controller.
+      requestBody:
+        $ref: '#/components/requestBodies/ml.create_controller'
+      parameters:
+        - $ref: '#/components/parameters/ml.create_controller___path.model_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ml.create_controller___200'
+    put:
+      operationId: ml.update_controller.0
+      x-operation-group: ml.update_controller
+      x-version-added: '2.12'
+      description: Updates a controller.
+      requestBody:
+        $ref: '#/components/requestBodies/ml.update_controller'
+      parameters:
+        - $ref: '#/components/parameters/ml.update_controller___path.model_id'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ml.update_controller___200'
   /_plugins/_ml/memory:
     get:
       operationId: ml.get_memory.0
@@ -13127,7 +13192,7 @@ paths:
       operationId: asynchronous_search.search.0_superseded
       x-operation-group: asynchronous_search.search
       x-version-added: '1.0'
-      description: Perform an asynchronous search.
+      description: Performs an asynchronous search.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#rest-api
       parameters:
@@ -13152,7 +13217,7 @@ paths:
       operationId: asynchronous_search.stats.0_superseded
       x-operation-group: asynchronous_search.stats
       x-version-added: '1.0'
-      description: Monitoring of asynchronous searches that are running, completed, and/or persisted.
+      description: Monitors any asynchronous searches that are `running`, `completed`, `persisted`.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#monitor-stats
       responses:
@@ -13171,7 +13236,7 @@ paths:
       operationId: asynchronous_search.get.0_superseded
       x-operation-group: asynchronous_search.get
       x-version-added: '1.0'
-      description: Get partial responses from asynchronous search.
+      description: Gets partial responses from an asynchronous search.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#get-partial-results
       parameters:
@@ -13190,7 +13255,7 @@ paths:
       operationId: asynchronous_search.delete.0_superseded
       x-operation-group: asynchronous_search.delete
       x-version-added: '1.0'
-      description: Delete asynchronous search.
+      description: Deletes any responses from an asynchronous search.
       externalDocs:
         url: https://opensearch.org/docs/latest/search-plugins/async/index/#delete-searches-and-results
       parameters:
@@ -15632,19 +15697,22 @@ components:
     asynchronous_search.search___query.keep_alive:
       name: keep_alive
       in: query
-      description: The amount of time that the result is saved in the cluster. For example, `2d` means that the results are stored in the cluster for 48 hours. The saved search results are deleted after this period or if the search is canceled. Note that this includes the query execution time. If the query overruns this time, the process cancels this query automatically.
+      description: |-
+        The amount of time that the result is saved in the cluster. For example, `2d` means that the results are stored in the cluster for 48 hours. 
+        The saved search results are deleted after this period or if the search is canceled. Note that this includes the query execution time. 
+        If the query overruns this time, the process cancels this query automatically.
       schema:
         type: string
     asynchronous_search.search___query.keep_on_completion:
       name: keep_on_completion
       in: query
-      description: Whether you want to save the results in the cluster after the search is complete.
+      description: Whether you want to save the results in the cluster after the search is complete. You can examine the stored results at a later time.
       schema:
         type: boolean
     asynchronous_search.search___query.wait_for_completion_timeout:
       name: wait_for_completion_timeout
       in: query
-      description: The amount of time that you plan to wait for the results. You can poll the remaining results based on an ID. The maximum value is `300s`. Default is `1s`.
+      description: The amount of time that you plan to wait for the results. You can poll the remaining results based on an ID. The maximum value is 300 seconds. Default is `1s`.
       schema:
         type: string
     bulk_stream___path.index:
@@ -23479,6 +23547,12 @@ components:
       required: true
       schema:
         type: string
+    ml.create_controller___path.model_id:
+      name: model_id
+      in: path
+      required: true
+      schema:
+        type: string
     ml.create_message___path.memory_id:
       name: memory_id
       in: path
@@ -23493,6 +23567,12 @@ components:
         type: string
     ml.delete_connector___path.connector_id:
       name: connector_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ml.delete_controller___path.model_id:
+      name: model_id
       in: path
       required: true
       schema:
@@ -23529,6 +23609,12 @@ components:
         type: string
     ml.get_connector___path.connector_id:
       name: connector_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ml.get_controller___path.model_id:
+      name: model_id
       in: path
       required: true
       schema:
@@ -23631,6 +23717,12 @@ components:
         type: string
     ml.update_connector___path.connector_id:
       name: connector_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ml.update_controller___path.model_id:
+      name: model_id
       in: path
       required: true
       schema:
@@ -27881,6 +27973,14 @@ components:
               - parameters
               - protocol
               - version
+    ml.create_controller:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_rate_limiter:
+                $ref: '#/components/schemas/ml._common___UserRateLimiter'
     ml.create_memory:
       content:
         application/json:
@@ -28307,6 +28407,16 @@ components:
               parameters.skip_validating_missing_parameters:
                 type: boolean
                 description: Whether to skip validating missing parameters.
+    ml.update_controller:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_rate_limiter:
+                $ref: '#/components/schemas/ml._common___UserRateLimiter'
+              model_id:
+                $ref: '#/components/schemas/_common___Name'
     ml.update_memory:
       content:
         application/json:
@@ -31398,6 +31508,17 @@ components:
               connector_id:
                 type: string
       description: ''
+    ml.create_controller___200:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              model_id:
+                $ref: '#/components/schemas/_common___Name'
+              status:
+                $ref: '#/components/schemas/ml._common___Status'
+      description: ''
     ml.create_memory___200:
       content:
         application/json:
@@ -31441,6 +31562,12 @@ components:
             $ref: '#/components/schemas/_common___WriteResponseBase'
       description: ''
     ml.delete_connector___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___WriteResponseBase'
+      description: ''
+    ml.delete_controller___200:
       content:
         application/json:
           schema:
@@ -31497,6 +31624,17 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ml._common___GetConnectorResponse'
+      description: ''
+    ml.get_controller___200:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user_rate_limiter:
+                $ref: '#/components/schemas/ml._common___UserRateLimiter'
+              model_id:
+                $ref: '#/components/schemas/_common___Name'
       description: ''
     ml.get_memory___200:
       content:
@@ -31670,6 +31808,12 @@ components:
             $ref: '#/components/schemas/ml._common___UnloadModelResponse'
       description: ''
     ml.update_connector___200:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_common___WriteResponseBase'
+      description: ''
+    ml.update_controller___200:
       content:
         application/json:
           schema:
@@ -56377,6 +56521,31 @@ components:
           description: The primary term.
       required:
         - _index
+    ml._common___User:
+      type: object
+      properties:
+        limit:
+          type:
+            - integer
+            - string
+          description: Max Predict API calls per user per time unit.
+        unit:
+          type: string
+          description: The unit of time.
+          enum:
+            - DAYS
+            - HOURS
+            - MICROSECONDS
+            - MILLISECONDS
+            - MINUTES
+            - NANOSECONDS
+            - SECONDS
+    ml._common___UserRateLimiter:
+      type: object
+      properties:
+        user1:
+          $ref: '#/components/schemas/ml._common___User'
+      additionalProperties: true
     ml._common___Values:
       type: object
       properties:
