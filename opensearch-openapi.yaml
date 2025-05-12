@@ -5935,6 +5935,78 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/ml.get_tool___200'
+  /_plugins/_neural/{node_id}/stats:
+    get:
+      operationId: neural.stats.2
+      x-operation-group: neural.stats
+      x-version-added: '3.0'
+      description: Provides information about the current status of the neural-search plugin.
+      parameters:
+        - $ref: '#/components/parameters/neural.stats___path.node_id'
+        - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/neural.stats___200'
+  /_plugins/_neural/{node_id}/stats/{stat}:
+    get:
+      operationId: neural.stats.3
+      x-operation-group: neural.stats
+      x-version-added: '3.0'
+      description: Provides information about the current status of the neural-search plugin.
+      parameters:
+        - $ref: '#/components/parameters/neural.stats___path.node_id'
+        - $ref: '#/components/parameters/neural.stats___path.stat'
+        - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/neural.stats___200'
+  /_plugins/_neural/stats:
+    get:
+      operationId: neural.stats.0
+      x-operation-group: neural.stats
+      x-version-added: '3.0'
+      description: Provides information about the current status of the neural-search plugin.
+      parameters:
+        - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/neural.stats___200'
+  /_plugins/_neural/stats/{stat}:
+    get:
+      operationId: neural.stats.1
+      x-operation-group: neural.stats
+      x-version-added: '3.0'
+      description: Provides information about the current status of the neural-search plugin.
+      parameters:
+        - $ref: '#/components/parameters/neural.stats___path.stat'
+        - $ref: '#/components/parameters/neural.stats___query.flat_stat_paths'
+        - $ref: '#/components/parameters/neural.stats___query.include_metadata'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/neural.stats___200'
   /_plugins/_notifications/channels:
     get:
       operationId: notifications.list_channels.0
@@ -24129,6 +24201,7 @@ components:
           - ConnectorTool
           - CreateAnomalyDetectorTool
           - IndexMappingTool
+          - ListIndexTool
           - LogPatternTool
           - MLModelTool
           - NeuralSparseSearchTool
@@ -24464,6 +24537,45 @@ components:
       description: Specific version type.
       schema:
         $ref: '#/components/schemas/_common___VersionType'
+      style: form
+    neural.stats___path.node_id:
+      name: node_id
+      in: path
+      description: Comma-separated list of node IDs or names to limit the returned information; leave empty to get information from all nodes.
+      schema:
+        type: string
+      required: true
+    neural.stats___path.stat:
+      name: stat
+      in: path
+      description: Comma-separated list of stats to retrieve; use empty string to retrieve all stats.
+      schema:
+        type: string
+        enum:
+          - cluster_version
+          - text_embedding_executions
+          - text_embedding_processors_in_pipelines
+      required: true
+    neural.stats___query.flat_stat_paths:
+      in: query
+      name: flat_stat_paths
+      description: |-
+        Whether to return stats in the flat form, which can improve readability, especially for heavily nested stats.
+        For example, the flat form of `"processors": { "ingest": { "text_embedding_executions": 20181212 } }` is 
+        `"processors.ingest.text_embedding_executions": "20181212"`.
+      schema:
+        type: boolean
+        default: false
+      style: form
+    neural.stats___query.include_metadata:
+      in: query
+      name: include_metadata
+      description: |-
+        Whether to return stat metadata instead of the raw stat value, includes additional information about the stat.
+        These can include things like type hints, time since last stats being recorded, or recent rolling interval values
+      schema:
+        type: boolean
+        default: false
       style: form
     nodes.hot_threads___path.node_id:
       name: node_id
@@ -32681,6 +32793,12 @@ components:
             required:
               - docs
       description: ''
+    neural.stats___200:
+      description: Successful response containing neural stats
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/neural._common___NeuralStats'
     nodes.hot_threads___200:
       content:
         text/plain: {}
@@ -43052,12 +43170,14 @@ components:
           required:
             - type
     _common.mapping___DynamicMapping:
-      type: string
-      enum:
-        - 'false'
-        - strict
-        - strict_allow_templates
-        - 'true'
+      oneOf:
+        - type: string
+          enum:
+            - 'false'
+            - strict
+            - strict_allow_templates
+            - 'true'
+        - type: boolean
     _common.mapping___DynamicTemplate:
       type: object
       properties:
@@ -48266,9 +48386,6 @@ components:
           type: object
           additionalProperties:
             type: object
-        max_score:
-          type: number
-          format: float
         num_reduce_phases:
           type: integer
           format: int32
@@ -58995,6 +59112,17 @@ components:
           description: The tool type.
         version:
           $ref: '#/components/schemas/_common___VersionString'
+        attributes:
+          x-version-added: '3.0'
+          $ref: '#/components/schemas/ml._common___ToolAttributes'
+    ml._common___ToolAttributes:
+      type: object
+      properties:
+        input_schema:
+          type: string
+        strict:
+          type: boolean
+      additionalProperties: true
     ml._common___ToolItems:
       type: object
       properties:
@@ -59002,10 +59130,15 @@ components:
           type: string
         type:
           type: string
+        description:
+          type: string
         parameters:
           $ref: '#/components/schemas/ml._common___Parameters'
         include_output_in_agent_response:
           type: boolean
+        attributes:
+          x-version-added: '3.0'
+          $ref: '#/components/schemas/ml._common___ToolAttributes'
       additionalProperties: true
     ml._common___TrainParameters:
       type: object
@@ -59100,6 +59233,149 @@ components:
         value:
           type: number
           description: The value.
+    neural._common___FlatNeuralInfoStats:
+      type: object
+      properties:
+        cluster_version:
+          $ref: '#/components/schemas/neural._common___InfoStringStat'
+          x-version-added: '3.0'
+        processors.ingest.text_embedding_processors_in_pipelines:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.0'
+    neural._common___FlatNeuralNodeStats:
+      type: object
+      properties:
+        processors.ingest.text_embedding_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.0'
+    neural._common___FlatNeuralStats:
+      type: object
+      properties:
+        _nodes:
+          $ref: '#/components/schemas/neural._common___NodesInfo'
+        cluster_name:
+          type: string
+        info:
+          $ref: '#/components/schemas/neural._common___FlatNeuralInfoStats'
+        all_nodes:
+          $ref: '#/components/schemas/neural._common___FlatNeuralNodeStats'
+        nodes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/neural._common___FlatNeuralNodeStats'
+    neural._common___InfoCounterStat:
+      oneOf:
+        - type: integer
+        - allOf:
+            - $ref: '#/components/schemas/neural._common___StatMetadata'
+            - type: object
+              properties:
+                stat_type:
+                  type: string
+                  const: info_counter
+    neural._common___InfoStringStat:
+      oneOf:
+        - type: string
+        - allOf:
+            - $ref: '#/components/schemas/neural._common___StatMetadata'
+            - type: object
+              properties:
+                stat_type:
+                  type: string
+                  const: info_string
+    neural._common___NestedNeuralInfoStats:
+      type: object
+      properties:
+        cluster_version:
+          $ref: '#/components/schemas/neural._common___InfoStringStat'
+          x-version-added: '3.0'
+        processors:
+          $ref: '#/components/schemas/neural._common___NestedNeuralInfoStatsProcessors'
+    neural._common___NestedNeuralInfoStatsProcessors:
+      type: object
+      properties:
+        ingest:
+          $ref: '#/components/schemas/neural._common___NestedNeuralInfoStatsProcessorsIngest'
+    neural._common___NestedNeuralInfoStatsProcessorsIngest:
+      type: object
+      properties:
+        text_embedding_processors_in_pipelines:
+          $ref: '#/components/schemas/neural._common___InfoCounterStat'
+          x-version-added: '3.0'
+    neural._common___NestedNeuralNodeStats:
+      type: object
+      properties:
+        processors:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsProcessors'
+    neural._common___NestedNeuralNodeStatsProcessors:
+      type: object
+      properties:
+        ingest:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStatsProcessorsIngest'
+    neural._common___NestedNeuralNodeStatsProcessorsIngest:
+      type: object
+      properties:
+        text_embedding_executions:
+          $ref: '#/components/schemas/neural._common___TimestampedEventCounterStat'
+          x-version-added: '3.0'
+    neural._common___NestedNeuralStats:
+      type: object
+      properties:
+        _nodes:
+          $ref: '#/components/schemas/neural._common___NodesInfo'
+        cluster_name:
+          type: string
+        info:
+          $ref: '#/components/schemas/neural._common___NestedNeuralInfoStats'
+        all_nodes:
+          $ref: '#/components/schemas/neural._common___NestedNeuralNodeStats'
+        nodes:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/neural._common___NestedNeuralNodeStats'
+    neural._common___NeuralStats:
+      oneOf:
+        - $ref: '#/components/schemas/neural._common___NestedNeuralStats'
+        - $ref: '#/components/schemas/neural._common___FlatNeuralStats'
+    neural._common___NodesInfo:
+      type: object
+      properties:
+        total:
+          type: integer
+        successful:
+          type: integer
+        failed:
+          type: integer
+    neural._common___StatMetadata:
+      type: object
+      required:
+        - stat_type
+        - value
+      properties:
+        value:
+          oneOf:
+            - type: integer
+            - type: string
+        stat_type:
+          type: string
+          enum:
+            - info_counter
+            - info_string
+            - timestamped_event_counter
+    neural._common___TimestampedEventCounterStat:
+      oneOf:
+        - type: integer
+        - allOf:
+            - $ref: '#/components/schemas/neural._common___StatMetadata'
+            - type: object
+              properties:
+                stat_type:
+                  type: string
+                  const: timestamped_event_counter
+                trailing_interval_value:
+                  type: integer
+                minutes_since_last_event:
+                  type: integer
     nodes._common___NodesResponseBase:
       description: Provides base response structure for node-related operations.
       type: object
@@ -62988,6 +63264,11 @@ components:
         technique:
           $ref: '#/components/schemas/search_pipeline._common___ScoreCombinationTechnique'
         parameters:
+          $ref: '#/components/schemas/search_pipeline._common___ScoreCombinationParameters'
+    search_pipeline._common___ScoreCombinationParameters:
+      type: object
+      properties:
+        weights:
           type: array
           items:
             type: number
@@ -63015,6 +63296,8 @@ components:
     search_pipeline._common___SearchPipelineStructure:
       type: object
       properties:
+        description:
+          type: string
         version:
           type: integer
           format: int32
