@@ -15117,6 +15117,72 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/indices.validate_query___200'
+  /{index}/ingestion/_pause:
+    post:
+      summary: Pause streaming ingestion for the given index.
+      operationId: ingestion.pause.0
+      x-operation-group: ingestion.pause
+      x-version-added: '3.1'
+      description: Use this API to pause ingestion for a given index.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/api-reference/document-apis/pull-based-ingestion-management/
+      parameters:
+        - $ref: '#/components/parameters/ingestion.pause___path.index'
+        - $ref: '#/components/parameters/ingestion.pause___query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/ingestion.pause___query.timeout'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ingestion.pause___200'
+  /{index}/ingestion/_resume:
+    post:
+      summary: Resume streaming ingestion for the given index.
+      operationId: ingestion.resume.0
+      x-operation-group: ingestion.resume
+      x-version-added: '3.1'
+      description: Use this API to resume ingestion for the given index.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/api-reference/document-apis/pull-based-ingestion-management/
+      parameters:
+        - $ref: '#/components/parameters/ingestion.resume___path.index'
+        - $ref: '#/components/parameters/ingestion.resume___query.cluster_manager_timeout'
+        - $ref: '#/components/parameters/ingestion.resume___query.timeout'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      requestBody:
+        $ref: '#/components/requestBodies/ingestion.resume'
+      responses:
+        '200':
+          $ref: '#/components/responses/ingestion.resume___200'
+  /{index}/ingestion/_state:
+    get:
+      summary: Get the current ingestion state for a given index.
+      operationId: ingestion.get_state.0
+      x-operation-group: ingestion.get_state
+      x-version-added: '3.1'
+      description: Use this API to retrieve the ingestion state for a given index.
+      externalDocs:
+        url: https://docs.opensearch.org/docs/latest/api-reference/document-apis/pull-based-ingestion-management/
+      parameters:
+        - $ref: '#/components/parameters/ingestion.get_state___path.index'
+        - $ref: '#/components/parameters/ingestion.get_state___query.next_token'
+        - $ref: '#/components/parameters/ingestion.get_state___query.size'
+        - $ref: '#/components/parameters/ingestion.get_state___query.timeout'
+        - $ref: '#/components/parameters/_global___query.pretty'
+        - $ref: '#/components/parameters/_global___query.human'
+        - $ref: '#/components/parameters/_global___query.error_trace'
+        - $ref: '#/components/parameters/_global___query.source'
+        - $ref: '#/components/parameters/_global___query.filter_path'
+      responses:
+        '200':
+          $ref: '#/components/responses/ingestion.get_state___200'
   /_opendistro/_asynchronous_search:
     post:
       operationId: asynchronous_search.search.0_superseded
@@ -24521,6 +24587,76 @@ components:
         type: boolean
         default: false
       style: form
+    ingestion.get_state___path.index:
+      name: index
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Index for which ingestion state should be retrieved.
+    ingestion.get_state___query.next_token:
+      name: next_token
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Token to retrieve the next page of results.
+    ingestion.get_state___query.size:
+      name: size
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Number of results to return per page.
+    ingestion.get_state___query.timeout:
+      name: timeout
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/_common___Duration'
+      description: Timeout for the request.
+    ingestion.pause___path.index:
+      name: index
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Index for which ingestion should be paused.
+    ingestion.pause___query.cluster_manager_timeout:
+      name: cluster_manager_timeout
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/_common___Duration'
+      description: Time to wait for cluster manager connection.
+    ingestion.pause___query.timeout:
+      name: timeout
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/_common___Duration'
+      description: Timeout for the request.
+    ingestion.resume___path.index:
+      name: index
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Index for which ingestion should be resumed.
+    ingestion.resume___query.cluster_manager_timeout:
+      name: cluster_manager_timeout
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/_common___Duration'
+      description: Time to wait for cluster manager connection.
+    ingestion.resume___query.timeout:
+      name: timeout
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/_common___Duration'
+      description: Timeout for the request.
     insights.top_queries___query.type:
       name: type
       in: query
@@ -30869,6 +31005,12 @@ components:
                 $ref: '#/components/schemas/ingest._common___Pipeline'
             description: The simulate definition
       required: true
+    ingestion.resume:
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ingestion._common___ResumeIngestionRequest'
     ism.add_policy:
       content:
         application/json:
@@ -31074,6 +31216,8 @@ components:
                 description: The model name.
               version:
                 $ref: '#/components/schemas/_common___VersionString'
+              function_name:
+                $ref: '#/components/schemas/ml._common___FunctionName'
               model_format:
                 $ref: '#/components/schemas/ml._common___ModelFormat'
               model_group_id:
@@ -31319,6 +31463,8 @@ components:
                 description: The model name.
               version:
                 $ref: '#/components/schemas/_common___VersionString'
+              function_name:
+                $ref: '#/components/schemas/ml._common___FunctionName'
               model_format:
                 $ref: '#/components/schemas/ml._common___ModelFormat'
               model_group_id:
@@ -34041,7 +34187,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/query._common___ErrorResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
       description: ''
     get___200:
       content:
@@ -34233,7 +34379,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/indices._common___IndexError'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
       description: ''
     indices.exists_alias___200:
       content:
@@ -34695,6 +34841,24 @@ components:
             required:
               - docs
       description: ''
+    ingestion.get_state___200:
+      description: Ingestion state retrieved successfully.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ingestion._common___GetIngestionStateResponse'
+    ingestion.pause___200:
+      description: Ingestion pause request acknowledged.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ingestion._common___PauseIngestionResponse'
+    ingestion.resume___200:
+      description: Ingestion resume request acknowledged.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ingestion._common___ResumeIngestionResponse'
     insights.top_queries___200:
       content:
         application/json:
@@ -35993,7 +36157,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/observability._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     observability.delete_objects___200:
       description: The API successfully deleted the specified observability objects.
       content:
@@ -36011,7 +36175,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/observability._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     observability.get_localstats___200:
       description: The API successfully retrieved local statistics.
       content:
@@ -36029,7 +36193,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/observability._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     observability.list_objects___200:
       description: The API successfully retrieved all observability objects.
       content:
@@ -36051,7 +36215,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/observability._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     ping___200:
       content:
         application/json: {}
@@ -36098,7 +36262,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/query._common___DataSourceNotFound'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     query.datasource_retrieve___200:
       description: Returns the requested data source.
       content:
@@ -36110,7 +36274,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/query._common___DataSourceNotFound'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     query.datasources_create___201:
       description: Confirms successful data source creation.
       content:
@@ -36134,7 +36298,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/query._common___DataSourceNotFound'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     rank_eval___200:
       content:
         application/json:
@@ -36523,13 +36687,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/query._common___ErrorResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
       description: ''
     search___404:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/query._common___ErrorResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
       description: ''
     security_analytics.get_alerts___200:
       content:
@@ -37404,7 +37568,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/sm._common___BadRequestResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     sm.delete_policy___200:
       description: The API successfully deleted the snapshot management policy.
       content:
@@ -37416,7 +37580,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/sm._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     sm.explain_policy___200:
       description: The API successfully explained the state of the snapshot management policy.
       content:
@@ -37440,7 +37604,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/sm._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     sm.start_policy___200:
       description: The API successfully started the snapshot management policy.
       content:
@@ -37472,7 +37636,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/sm._common___NotFoundResponse'
+            $ref: '#/components/schemas/_common___ErrorResponseBase'
     snapshot.cleanup_repository___200:
       content:
         application/json:
@@ -39616,11 +39780,6 @@ components:
         - min
         - thread_info
         - total
-    _common___ResourceType:
-      type: string
-      description: The type of resource.
-      enum:
-        - index_or_alias
     _common___Result:
       oneOf:
         - type: string
@@ -56771,43 +56930,6 @@ components:
         - checksum
         - 'false'
         - 'true'
-    indices._common___IndexError:
-      type: object
-      description: The error information for an index operation.
-      properties:
-        error:
-          $ref: '#/components/schemas/indices._common___IndexErrorCause'
-        status:
-          type: number
-          description: The HTTP status code for the error.
-    indices._common___IndexErrorCause:
-      type: object
-      description: The detailed cause of an index error.
-      properties:
-        type:
-          description: The type of error.
-          type: string
-        reason:
-          description: A human-readable explanation of the error.
-          type: string
-        root_cause:
-          type: array
-          description: The underlying causes of the error.
-          items:
-            $ref: '#/components/schemas/indices._common___IndexErrorCause'
-        index:
-          $ref: '#/components/schemas/_common___IndexName'
-        index_uuid:
-          $ref: '#/components/schemas/_common___Uuid'
-        resource.id:
-          $ref: '#/components/schemas/_common___IndexName'
-        resource.type:
-          $ref: '#/components/schemas/_common___ResourceType'
-      required:
-        - type
-      additionalProperties:
-        title: metadata
-        description: Additional details about the error.
     indices._common___IndexGetUpgradeStatus:
       type: object
       description: The upgrade status information for indexes.
@@ -57138,6 +57260,14 @@ components:
           $ref: '#/components/schemas/_common___StringifiedInteger'
         composite_index.star_tree:
           $ref: '#/components/schemas/indices._common___IndexSettingsStarTree'
+        ingestion_source:
+          $ref: '#/components/schemas/indices._common___IngestionSource'
+        replication.type:
+          type: string
+          description: Defines the replication type.
+          enum:
+            - DOCUMENT
+            - SEGMENT
       additionalProperties:
         title: custom_settings
     indices._common___IndexSettingsAnalysis:
@@ -57772,6 +57902,86 @@ components:
         created_string:
           type: string
           description: The string representation of the version when the index was created.
+    indices._common___IngestionSource:
+      type: object
+      description: The pull-based ingestion settings controlling how data is read from streaming sources.
+      properties:
+        type:
+          type: string
+          description: The streaming source type.
+          enum:
+            - file
+            - kafka
+            - kinesis
+            - none
+        pointer:
+          $ref: '#/components/schemas/indices._common___IngestionSourcePointer'
+        pointer.init.reset:
+          $ref: '#/components/schemas/indices._common___IngestionSourcePointerInitReset'
+        pointer.init.reset.value:
+          type: string
+          description: Specifies the offset value or timestamp in milliseconds.
+        error_strategy:
+          type: string
+          description: Defines the policy for error handling.
+          enum:
+            - BLOCK
+            - DROP
+        poll:
+          $ref: '#/components/schemas/indices._common___IngestionSourcePoll'
+        poll.max_batch_size:
+          $ref: '#/components/schemas/_common___StringifiedLong'
+          description: The maximum number of records to retrieve in each poll operation.
+        poll.timeout:
+          $ref: '#/components/schemas/_common___StringifiedInteger'
+          description: Determines the Poll timeout value.
+        num_processor_threads:
+          $ref: '#/components/schemas/_common___StringifiedInteger'
+          description: Defines the number of processor or writer threads.
+        internal_queue_size:
+          $ref: '#/components/schemas/_common___StringifiedInteger'
+          description: Defines the size of the internal blocking queue in pull-based ingestion.
+        param:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom parameters for the ingestion source.
+    indices._common___IngestionSourcePointer:
+      type: object
+      properties:
+        init:
+          $ref: '#/components/schemas/indices._common___IngestionSourcePointerInit'
+    indices._common___IngestionSourcePointerInit:
+      type: object
+      properties:
+        reset:
+          $ref: '#/components/schemas/indices._common___IngestionSourcePointerInitReset'
+        reset.value:
+          type: string
+          description: Specifies the offset value or timestamp in milliseconds.
+    indices._common___IngestionSourcePointerInitReset:
+      type: string
+      description: Determines where to start reading from the stream.
+      enum:
+        - EARLIEST
+        - LATEST
+        - NONE
+        - RESET_BY_OFFSET
+        - RESET_BY_TIMESTAMP
+        - earliest
+        - latest
+        - none
+        - reset_by_offset
+        - reset_by_timestamp
+    indices._common___IngestionSourcePoll:
+      type: object
+      properties:
+        max_batch_size:
+          $ref: '#/components/schemas/_common___StringifiedLong'
+          description: The maximum number of records to retrieve in each poll operation.
+        timeout:
+          $ref: '#/components/schemas/_common___StringifiedInteger'
+          description: Determines the Poll timeout value.
     indices._common___ManagedBy:
       type: string
       description: The component managing the data stream or index.
@@ -60014,6 +60224,126 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/_common___ActionStatusOptions'
+    ingestion._common___GetIngestionStateResponse:
+      type: object
+      properties:
+        ingestion_state:
+          type: object
+          description: Ingestion state for a given index and its shards.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ingestion._common___ShardIngestionState'
+        next_page_token:
+          type: string
+          description: Specifies the next page token. Pass this token in the request to retrieve contents of the next page.
+        _shards:
+          $ref: '#/components/schemas/_common___ShardStatistics'
+    ingestion._common___IngestionStateShardFailure:
+      type: object
+      properties:
+        shard:
+          type: integer
+          description: The shard number.
+        error:
+          type: string
+          description: Indicates the shard level error message.
+      required:
+        - error
+        - shard
+    ingestion._common___PauseIngestionResponse:
+      type: object
+      properties:
+        acknowledged:
+          type: boolean
+          description: Indicates if the pause request has been acknowledged.
+        shards_acknowledged:
+          type: boolean
+          description: Indicates if the pause request has been acknowledged by individual shards.
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion._common___IngestionStateShardFailure'
+        error:
+          type: string
+      required:
+        - acknowledged
+        - shards_acknowledged
+    ingestion._common___ResetSettings:
+      type: object
+      properties:
+        shard:
+          type: integer
+          description: The shard ID to reset.
+        mode:
+          type: string
+          enum:
+            - OFFSET
+            - TIMESTAMP
+          description: Reset mode to be used.
+        value:
+          type: string
+          description: The offset or timestamp value to be used to reset the consumer.
+      required:
+        - mode
+        - shard
+        - value
+    ingestion._common___ResumeIngestionRequest:
+      type: object
+      properties:
+        reset_settings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion._common___ResetSettings'
+          description: Reset settings to be applied before resuming ingestion on a shard. This is optional.
+    ingestion._common___ResumeIngestionResponse:
+      type: object
+      properties:
+        acknowledged:
+          type: boolean
+          description: Indicates if the resume request has been acknowledged.
+        shards_acknowledged:
+          type: boolean
+          description: Indicates if the resume request has been acknowledged by individual shards.
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/ingestion._common___IngestionStateShardFailure'
+        error:
+          type: string
+      required:
+        - acknowledged
+        - shards_acknowledged
+    ingestion._common___ShardIngestionState:
+      type: object
+      properties:
+        shard:
+          type: integer
+          description: The shard number.
+        poller_state:
+          type: string
+          enum:
+            - CLOSED
+            - NONE
+            - PAUSED
+            - POLLING
+            - PROCESSING
+          description: Indicates the current state of the poller.
+        error_policy:
+          type: string
+          enum:
+            - BLOCK
+            - DROP
+          description: Indicates the policy used to handle failed messages.
+        poller_paused:
+          type: boolean
+          description: Indicates if the poller has been paused.
+        write_block_enabled:
+          type: boolean
+          description: Indicates if a write block has been created.
+        batch_start_pointer:
+          type: string
+          description: Indicates the shard pointer from where the poller will resume during shard recovery.
     insights._common___GroupingType:
       type: string
       enum:
@@ -60879,6 +61209,76 @@ components:
           type: number
         script_compilation_errors:
           type: number
+        remote_vector_index_build_stats:
+          $ref: '#/components/schemas/knn._common___RemoteVectorIndexBuildStats'
+    knn._common___RemoteVectorIndexBuildStats:
+      type: object
+      properties:
+        repository_stats:
+          $ref: '#/components/schemas/knn._common___RemoteVectorIndexRepositoryStats'
+        client_stats:
+          $ref: '#/components/schemas/knn._common___RemoteVectorIndexClientStats'
+        build_stats:
+          $ref: '#/components/schemas/knn._common___RemoteVectorIndexBuildStatsDetails'
+    knn._common___RemoteVectorIndexBuildStatsDetails:
+      type: object
+      properties:
+        remote_index_build_current_flush_operations:
+          type: integer
+          format: int64
+        remote_index_build_current_flush_size:
+          $ref: '#/components/schemas/_common___ByteCount'
+        remote_index_build_current_merge_operations:
+          type: integer
+          format: int64
+        remote_index_build_current_merge_size:
+          $ref: '#/components/schemas/_common___ByteCount'
+        remote_index_build_flush_time_in_millis:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+        remote_index_build_merge_time_in_millis:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+    knn._common___RemoteVectorIndexClientStats:
+      type: object
+      properties:
+        build_request_failure_count:
+          type: integer
+          format: int64
+        build_request_success_count:
+          type: integer
+          format: int64
+        index_build_failure_count:
+          type: integer
+          format: int64
+        index_build_success_count:
+          type: integer
+          format: int64
+        status_request_failure_count:
+          type: integer
+          format: int64
+        status_request_success_count:
+          type: integer
+          format: int64
+        waiting_time_in_ms:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+    knn._common___RemoteVectorIndexRepositoryStats:
+      type: object
+      properties:
+        read_success_count:
+          type: integer
+          format: int64
+        read_failure_count:
+          type: integer
+          format: int64
+        successful_read_time_in_millis:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+        successful_write_time_in_millis:
+          $ref: '#/components/schemas/_common___DurationValueUnitMillis'
+        write_success_count:
+          type: integer
+          format: int64
+        write_failure_count:
+          type: integer
+          format: int64
     knn._common___Stats:
       allOf:
         - $ref: '#/components/schemas/nodes._common___NodesResponseBase'
@@ -66082,36 +66482,6 @@ components:
           $ref: '#/components/schemas/notifications._common___HeaderParamsMap'
       required:
         - url
-    observability._common___ErrorResponse:
-      type: object
-      description: The detailed error response.
-      properties:
-        root_cause:
-          type: array
-          description: The list of root causes for the error.
-          items:
-            $ref: '#/components/schemas/observability._common___RootCause'
-        type:
-          type: string
-          description: The type of error.
-        reason:
-          type: string
-          description: The reason for the error.
-      required:
-        - reason
-        - root_cause
-        - type
-    observability._common___NotFoundResponse:
-      type: object
-      description: The error response when a resource is not found.
-      properties:
-        error:
-          $ref: '#/components/schemas/observability._common___ErrorResponse'
-        status:
-          type: integer
-      required:
-        - error
-        - status
     observability._common___ObservabilityObject:
       type: object
       description: The core observability object containing visualization and query data.
@@ -66197,18 +66567,6 @@ components:
       required:
         - language
         - query
-    observability._common___RootCause:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The type of the root cause.
-        reason:
-          type: string
-          description: The reason for the root cause.
-      required:
-        - reason
-        - type
     observability._common___SavedQuery:
       type: object
       description: The configuration for a saved query.
@@ -66427,14 +66785,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/query._common___DataSource'
-    query._common___DataSourceNotFound:
-      type: object
-      description: Indicates that the requested data source could not be found.
-      properties:
-        error:
-          $ref: '#/components/schemas/query._common___ErrorResponse'
-      required:
-        - error
     query._common___DataSourceRetrieve:
       type: object
       description: Represents the fundamental reason for an error.
@@ -66471,46 +66821,6 @@ components:
         - properties
         - resultIndex
         - status
-    query._common___Error:
-      type: object
-      description: Contains detailed information about an error.
-      properties:
-        root_cause:
-          type: array
-          items:
-            $ref: '#/components/schemas/query._common___RootCause'
-            description: The underlying causes of the error.
-        type:
-          type: string
-          description: The error type classification.
-        reason:
-          type: string
-          description: The human-readable error message.
-      required:
-        - reason
-        - root_cause
-        - type
-    query._common___ErrorResponse:
-      type: object
-      description: Provides details about an API error.
-      properties:
-        error:
-          $ref: '#/components/schemas/query._common___Error'
-        status:
-          type: number
-          description: The HTTP status code for the error.
-    query._common___RootCause:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The error type classification.
-        reason:
-          type: string
-          description: The human-readable error message.
-      required:
-        - reason
-        - type
     remote_store._common___RemoteStoreRestoreInfo:
       type: object
       properties:
@@ -68529,15 +68839,6 @@ components:
           type: boolean
         is_node_certificate_request:
           type: boolean
-    sm._common___BadRequestResponse:
-      type: object
-      properties:
-        error:
-          type: string
-          description: An error message that describes the bad request.
-        status:
-          type: integer
-          description: The HTTP status code.
     sm._common___CreateUpdatePolicyRequest:
       type: object
       properties:
@@ -68731,35 +69032,6 @@ components:
       required:
         - _id
         - sm_policy
-    sm._common___NotFoundError:
-      type: object
-      properties:
-        root_cause:
-          type: array
-          description: An array of root causes for the error.
-          items:
-            $ref: '#/components/schemas/sm._common___RootCause'
-        type:
-          type: string
-          description: The error type.
-        reason:
-          type: string
-          description: The detailed reason for the error.
-      required:
-        - reason
-        - type
-    sm._common___NotFoundResponse:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/sm._common___NotFoundError'
-          description: The detailed error information.
-        status:
-          type: integer
-          description: The HTTP status code.
-      required:
-        - error
-        - status
     sm._common___NotificationChannel:
       type: object
       properties:
@@ -68830,15 +69102,6 @@ components:
         count:
           type: integer
           description: The number of retry attempts made.
-    sm._common___RootCause:
-      type: object
-      properties:
-        type:
-          type: string
-          description: The type of the root cause error.
-        reason:
-          type: string
-          description: Detailed explanation of the root cause.
     sm._common___ShardsInfo:
       type: object
       properties:
